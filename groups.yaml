@@ -1,0 +1,36 @@
+first_floor_motion_and_occupancy:
+  name: First Floor Motion and Occupancy
+  icon: mdi:motion-sensor-outline
+  entities:
+    - binary_sensor.motion_livingroom_front
+    - binary_sensor.motion_livingroom_1
+    - binary_sensor.motion_kitchen
+    - binary_sensor.motion_dining_room
+    - binary_sensor.fp_living_room_presence_sensor
+    - binary_sensor.living_room_main_presence_sensor
+    - binary_sensor.dining_mm_presence_sensor
+    - binary_sensor.kitchen_mm_presence_sensor
+
+motion_hall:
+  name: Hallway Motion
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.motion_hall
+    - binary_sensor.hallway_front_motion_motion_detection
+    - binary_sensor.hallway_occupancy
+
+motion_basement_hall:
+  name: Basement Hallway Motion
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.motion_basement_hallway_2_occupancy
+    - binary_sensor.motion_basement_stairs_occupancy
+    - binary_sensor.basement_hallway_motion_presence
+
+motion_master_bathroom:
+  name: Master Bathroom Motion
+  icon: mdi:motion-sensor
+  entities:
+    - binary_sensor.motion_master_bath_door
+    - binary_sensor.motion_master_shower
+    - binary_sensor.motion_master_bathroom

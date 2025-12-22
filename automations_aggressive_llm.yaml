@@ -1,0 +1,64 @@
+# Aggressive LLM Routing - Route almost all conversational commands to LLM
+# This automation routes nearly everything to the LLM except basic device control
+
+- id: "athena_aggressive_llm_routing"
+  alias: "Athena Aggressive LLM Routing"
+  description: "Route all conversational and question commands to LLM"
+  trigger:
+    - platform: state
+      entity_id: input_text.last_voice_command
+      to: ~
+  condition:
+    - condition: template
+      value_template: "{{ trigger.to_state.state | length > 0 and trigger.to_state.state != 'unknown' }}"
+  action:
+    - variables:
+        command_text: "{{ states('input_text.last_voice_command') | lower }}"
+        # Only send basic device control to HA - everything else goes to LLM
+        simple_device_commands: [
+          'turn on', 'turn off', 'lights on', 'lights off',
+          'open', 'close', 'lock', 'unlock', 'start', 'stop'
+        ]
+        is_simple_device: >
+          {% set cmd = states('input_text.last_voice_command') | lower %}
+          {% set simple_cmds = ['turn on', 'turn off', 'lights on', 'lights off', 'open', 'close', 'lock', 'unlock', 'start', 'stop'] %}
+          {% set is_device_command = false %}
+          {% for simple_cmd in simple_cmds %}
+            {% if simple_cmd in cmd and cmd.split()|length <= 4 %}
+              {% set is_device_command = true %}
+            {% endif %}
+          {% endfor %}
+          {{ is_device_command }}
+    - choose:
+        # Only route very simple device commands to HA
+        - conditions:
+            - condition: template
+              value_template: >
+                {% set cmd = states('input_text.last_voice_command') | lower %}
+                {% set simple_cmds = ['turn on', 'turn off', 'lights on', 'lights off', 'open', 'close', 'lock', 'unlock', 'start', 'stop'] %}
+                {% set is_device_command = false %}
+                {% for simple_cmd in simple_cmds %}
+                  {% if simple_cmd in cmd and cmd.split()|length <= 4 %}
+                    {% set is_device_command = true %}
+                  {% endif %}
+                {% endfor %}
+                {{ is_device_command }}
+          sequence:
+            - service: rest_command.athena_llm_simple
+              data:
+                command: "{{ states('input_text.last_voice_command') }}"
+            - service: system_log.write
+              data:
+                message: "Athena: Routing SIMPLE device command to HA: {{ states('input_text.last_voice_command') }}"
+                level: info
+      # Route EVERYTHING ELSE to LLM (default case)
+      default:
+        - service: rest_command.athena_llm_complex
+          data:
+            command: "{{ states('input_text.last_voice_command') }}"
+        - service: system_log.write
+          data:
+            message: "Athena: Routing CONVERSATIONAL command to LLM: {{ states('input_text.last_voice_command') }}"
+            level: info
+  mode: queued
+  max: 5

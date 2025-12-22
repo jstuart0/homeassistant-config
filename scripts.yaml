@@ -1,0 +1,589 @@
+# =======================
+# TABLET DASHBOARD SCRIPTS
+# =======================
+
+# Ring Doorbell Auto-Display Scripts
+show_ring_camera:
+  alias: "Show Ring Camera on All Tablets (Clinton Front Door)"
+  sequence:
+    # Navigate all tablets to Ring camera page
+    - service: browser_mod.navigate
+      data:
+        path: /tablet-dashboard/ring-camera
+        browser_id:
+          - all
+    # Send notification to mobile devices
+    - service: notify.mobile_app_jay_iphone_14_pro_max
+      data:
+        title: "🔔 Doorbell"
+        message: "Someone is at the Clinton Front Door"
+    # Start monitoring for auto-dismiss conditions
+    - wait_for_trigger:
+        # Exit condition 1: Front door opened
+        - platform: state
+          entity_id: binary_sensor.door_front_contact
+          to: "on"
+      timeout: "00:03:00"
+      continue_on_timeout: true
+    # Return tablets to appropriate pages after delay
+    - delay: 00:00:05
+    - service: browser_mod.navigate
+      data:
+        path: /tablet-dashboard/home
+        browser_id:
+          - all
+
+show_ring_camera_alt:
+  alias: "Show Ring Camera on All Tablets (Other Doors)"
+  sequence:
+    # Navigate all tablets to Ring camera page
+    - service: browser_mod.navigate
+      data:
+        path: /tablet-dashboard/ring-camera
+        browser_id:
+          - all
+    # Send notification to mobile devices
+    - service: notify.mobile_app_jay_iphone_14_pro_max
+      data:
+        title: "🔔 Doorbell"
+        message: "Someone is at the Front Door"
+    # Start monitoring for auto-dismiss conditions
+    - wait_for_trigger:
+        # Exit condition 1: Front door opened
+        - platform: state
+          entity_id: binary_sensor.door_front_contact
+          to: "on"
+      timeout: "00:03:00"
+      continue_on_timeout: true
+    # Return tablets to appropriate pages after delay
+    - delay: 00:00:05
+    - service: browser_mod.navigate
+      data:
+        path: /tablet-dashboard/home
+        browser_id:
+          - all
+
+dismiss_ring_camera:
+  alias: "Dismiss Ring Camera Manually"
+  sequence:
+    # Navigate back to home page on all tablets
+    - service: browser_mod.navigate
+      data:
+        path: /tablet-dashboard/home
+        browser_id:
+          - all
+
+# Movie Mode Scripts
+hue_sync_movie_mode:
+  alias: "Movie Mode - Hue Sync"
+  sequence:
+    # Enable movie mode input boolean
+    - service: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.living_room_movie_mode
+    # Set Hue Sync to Movie mode
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.hue_sync_mode
+      data:
+        option: "Movie"
+    # Set sync intensity to medium
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.hue_sync_intensity
+      data:
+        value: 50
+    # Dim living room lights to 20%
+    - service: light.turn_on
+      target:
+        entity_id: light.living_room
+      data:
+        brightness_pct: 20
+        color_temp: 300  # Warm white
+    # Turn on Samsung TV
+    - service: media_player.turn_on
+      target:
+        entity_id: media_player.samsung_tv_living_room
+    # Set WLED to ambient movie lighting
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.wled
+          - light.entertainment_center_2
+      data:
+        brightness: 51  # 20%
+        rgb_color: [50, 0, 100]  # Deep blue ambient
+
+exit_movie_mode:
+  alias: "Exit Movie Mode"
+  sequence:
+    # Disable movie mode input boolean
+    - service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.living_room_movie_mode
+    # Turn off Hue Sync
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.hue_sync_mode
+      data:
+        option: "Off"
+    # Return living room lights to normal
+    - service: light.turn_on
+      target:
+        entity_id: light.living_room
+      data:
+        brightness_pct: 80
+        color_temp: 250  # Neutral white
+    # Turn off WLED ambient
+    - service: light.turn_off
+      target:
+        entity_id:
+          - light.wled
+          - light.entertainment_center_2
+
+# WLED Preset Scripts
+wled_party_mode:
+  alias: "WLED Party Mode"
+  sequence:
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.wled
+          - light.entertainment_center_2
+      data:
+        brightness: 255
+        effect: "Rainbow"
+
+wled_ambient_mode:
+  alias: "WLED Ambient Mode"
+  sequence:
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.wled
+          - light.entertainment_center_2
+      data:
+        brightness: 102  # 40%
+        rgb_color: [255, 218, 185]  # Warm white
+
+wled_night_mode:
+  alias: "WLED Night Mode"
+  sequence:
+    - service: light.turn_on
+      target:
+        entity_id:
+          - light.wled
+          - light.entertainment_center_2
+      data:
+        brightness: 25   # 10%
+        rgb_color: [0, 0, 100]  # Deep blue
+
+wled_off_all:
+  alias: "Turn Off All WLED"
+  sequence:
+    - service: light.turn_off
+      target:
+        entity_id:
+          - light.wled
+          - light.entertainment_center_2
+
+# Music Control Scripts (to be added after HomePod discovery)
+music_all_house:
+  alias: "Play Music - All House"
+  sequence:
+    - service: spotcast.start
+      data:
+        # Will be configured after HomePod discovery
+        device_name: "Whole House Audio"
+
+music_first_floor:
+  alias: "Play Music - First Floor"
+  sequence:
+    - service: spotcast.start
+      data:
+        # Will be configured after HomePod discovery
+        device_name: "First Floor Audio"
+
+music_stop_all:
+  alias: "Stop All Music"
+  sequence:
+    - service: media_player.media_stop
+      target:
+        entity_id:
+          # Will be configured after HomePod discovery
+          - media_player.whole_house_audio
+
+# =======================
+# EXISTING VACUUM SCRIPTS
+# =======================
+
+vacuum_trash_can:
+  alias: "Vacuum: Trash Can"
+  sequence:
+    - service: vacuum.send_command
+      target:
+        entity_id: vacuum.roborock_vacuum_a15
+      data:
+        command: app_goto_target
+        params:
+          - - 15358
+            - 26126
+  mode: single
+  icon: mdi:trash-can-outline
+
+vacuum_kitchen:
+  alias: "Vacuum: Kitchen"
+  sequence:
+    - service: xiaomi_miio.vacuum_clean_zone
+      target:
+        entity_id: vacuum.roborock_vacuum_a15
+      data:
+        repeats: 1
+        zone:
+          - - 13942
+            - 25482
+            - 19395
+            - 28512
+  mode: single
+  icon: mdi:fridge
+
+vacuum_diningroom:
+  alias: "Vacuum: Dining Room"
+  sequence:
+    - service: xiaomi_miio.vacuum_clean_zone
+      target:
+        entity_id: vacuum.roborock_vacuum_a15
+      data:
+        repeats: 1
+        zone:
+          - - 19393
+            - 25104
+            - 24722
+            - 28622
+  mode: single
+  icon: mdi:table-chair
+
+vacuum_livingroom:
+  alias: "Vacuum: Living Room"
+  sequence:
+    - service: xiaomi_miio.vacuum_clean_zone
+      target:
+        entity_id: vacuum.roborock_vacuum_a15
+      data:
+        repeats: 1
+        zone:
+          - - 24742
+            - 25095
+            - 30507
+            - 28685
+  mode: single
+  icon: mdi:television
+
+remote_command:
+  alias: Remote Command
+  fields:
+    command:
+      description: The Command to send to the remote
+      example: up
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.master_bedroom_media_cabinet
+              state: Apple TV
+          sequence:
+            - service: remote.send_command
+              target:
+                entity_id: remote.master_bedroom_tv
+              data:
+                command: "{{ command }}"
+      default: []
+  mode: single
+
+remote_arrow_up:
+  alias: Remote Arrow Up
+  sequence:
+    - service: script.remote_command
+      data:
+        command: up
+  mode: single
+
+remote_arrow_down:
+  alias: Remote Arrow Down
+  sequence:
+    - service: script.remote_command
+      data:
+        command: down
+  mode: single
+
+remote_arrow_right:
+  alias: Remote Arrow Right
+  sequence:
+    - service: script.remote_command
+      data:
+        command: right
+  mode: single
+
+remote_arrow_left:
+  alias: Remote Arrow Left
+  sequence:
+    - service: script.remote_command
+      data:
+        command: left
+  mode: single
+
+remote_top_menu:
+  alias: Remote Top Menu
+  sequence:
+    - service: script.remote_command
+      data:
+        command: top_menu
+  mode: single
+
+remote_home:
+  alias: Remote Home
+  sequence:
+    - service: script.remote_command
+      data:
+        command: home
+  mode: single
+
+remote_select:
+  alias: Remote select
+  sequence:
+    - service: script.remote_command
+      data:
+        command: select
+  mode: single
+
+remote_wakeup:
+  alias: Remote wakeup
+  sequence:
+    - service: script.remote_command
+      data:
+        command: wakeup
+  mode: single
+
+remote_menu:
+  alias: Remote menu
+  sequence:
+    - service: script.remote_command
+      data:
+        command: menu
+  mode: single
+
+lounge_appletv_disney:
+  alias: Select Disney
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.master_bedroom_tv
+      data:
+        delay_secs: 1.5
+        command:
+          - top_menu
+          - home
+          #   - menu
+          - right
+          - right
+          - right
+          - right
+          - select
+    - service: input_select.select_option
+      entity_id: input_select.master_bedroom_media_cabinet
+      data:
+        option: "Apple TV"
+
+lounge_appletv_netflix:
+  alias: Select Netflix
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.master_bedroom_tv
+      data:
+        delay_secs: 1.5
+        command:
+          - top_menu
+          - home
+          #  - menu
+          - right
+          - right
+          - select
+    - service: input_select.select_option
+      entity_id: input_select.master_bedroom_media_cabinet
+      data:
+        option: "Apple TV"
+
+lounge_appletv_youtubetv:
+  alias: Select YouTube TV
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.master_bedroom_tv
+      data:
+        delay_secs: 1.5
+        command:
+          - top_menu
+          - home
+          #        - menu
+          #        - right
+          - select
+    - service: input_select.select_option
+      entity_id: input_select.master_bedroom_media_cabinet
+      data:
+        option: "Apple TV"
+
+lounge_appletv_power_on:
+  alias: Living Room Apple TV On
+  sequence:
+    - if:
+        - "{{ 1 }}"
+      then:
+        - service: remote.send_command
+          target:
+            entity_id: remote.living_room_apple_tv
+          data:
+            delay_secs: 1.5
+            command:
+              - home
+
+lounge_appletv_power_off:
+  alias: Apple Tv off
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.living_room_apple_tv
+      data:
+        delay_secs: 1.5
+        command:
+          - home_hold
+          - select
+
+######
+lr_remote_command:
+  alias: LR Remote Command
+  fields:
+    command:
+      description: The Command to send to the remote
+      example: up
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.lr_media_cabinet
+              state: Apple TV
+          sequence:
+            - service: remote.send_command
+              target:
+                entity_id: remote.living_room
+              data:
+                command: "{{ command }}"
+      default: []
+  mode: single
+
+lr_appletv_disney:
+  alias: Select Disney
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.living_room
+      data:
+        delay_secs: 1.5
+        command:
+          - top_menu
+          - home
+          #   - menu
+          - right
+          - right
+          - right
+          - right
+          - select
+    - service: input_select.select_option
+      entity_id: input_select.lr_media_cabinet
+      data:
+        option: "Apple TV"
+
+lr_appletv_netflix:
+  alias: Select Netflix
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.living_room
+      data:
+        delay_secs: 1.5
+        command:
+          - top_menu
+          - home
+          #  - menu
+          - right
+          - right
+          - select
+    - service: input_select.select_option
+      entity_id: input_select.lr_media_cabinet
+      data:
+        option: "Apple TV"
+
+lr_appletv_youtubetv:
+  alias: Select YouTube TV
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: remote.living_room
+      data:
+        delay_secs: 1.5
+        command:
+          - top_menu
+          - home
+          #        - menu
+          #        - right
+          - select
+    - service: input_select.select_option
+      entity_id: input_select.lr_media_cabinet
+      data:
+        option: "Apple TV"
+
+lr_appletv_power_toggle:
+  alias: Living Room Apple TV Toggle
+  sequence:
+    - if:
+        - "{{is_state('media_player.living_room_2', 'idle' )}}"
+      then:
+        - service: remote.send_command
+          target:
+            entity_id: remote.living_room
+          data:
+            delay_secs: 1.5
+            command:
+              - home
+      else:
+        - service: remote.send_command
+          target:
+            entity_id: remote.living_room
+          data:
+            delay_secs: 1.5
+            command:
+              - home_hold
+              - select
+
+reset_light_settings:
+  alias: Reset Light Settings
+  sequence:
+    - service: input_boolean.turn_off
+      data:
+        entity_id:
+          - input_boolean.leave_lights_on
+          - input_boolean.brightness_override
+
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.leave_lights_on_minutes
+        value: 10
+
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.override_brightness
+        value: 100
+#############################
+
+mode: single
+icon: mdi:apple

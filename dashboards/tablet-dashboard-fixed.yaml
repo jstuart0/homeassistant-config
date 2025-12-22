@@ -1,0 +1,837 @@
+# ===========================================
+# TABLET DASHBOARD - MAIN CONFIGURATION
+# ===========================================
+# Complete tablet dashboard system for all devices
+# Designed for guest-friendly operation with 5-second rule
+
+title: "Smart Home Control"
+theme: default
+
+# Kiosk mode configuration
+kiosk_mode:
+  hide_header: true
+  hide_sidebar: true
+  hide_overflow: true
+
+views:
+  # ===========================================
+  # HOME/LANDING PAGE
+  # ===========================================
+  - title: "Home"
+    path: home
+    icon: mdi:home
+    panel: false
+    type: sections
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          # Time and Weather Header
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "{{ now().strftime('%l:%M %p') }}"
+                secondary: "{{ now().strftime('%A, %B %d') }}"
+                icon: mdi:clock-outline
+                icon_color: blue
+                layout: horizontal
+                card_mod:
+                  style: |
+                    ha-card {
+                      font-size: 1.3em;
+                      text-align: center;
+                      height: 80px;
+                    }
+              - type: custom:mushroom-chips-card
+                chips:
+                  - type: template
+                    content: "{{ states('sensor.lights_on_count') }} lights"
+                    icon: mdi:lightbulb
+                    icon_color: >
+                      {% if states('sensor.lights_on_count')|int > 0 %}
+                        yellow
+                      {% else %}
+                        grey
+                      {% endif %}
+                  - type: template
+                    content: "{{ state_attr('climate.thermostat', 'current_temperature')|round(0) }}°F"
+                    icon: mdi:thermometer
+                    icon_color: orange
+                  - type: weather
+                    entity: weather.home
+                    show_conditions: true
+                    show_temperature: true
+                alignment: end
+
+          # First Floor Room Controls
+          - type: custom:mushroom-light-card
+            entity: light.living_room
+            name: "Living Room"
+            icon: mdi:sofa
+            layout: vertical
+            fill_container: true
+            primary_info: name
+            secondary_info: state
+            show_brightness_control: false
+            show_color_control: false
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/living-room
+            card_mod:
+              style: |
+                ha-card {
+                  height: 120px;
+                  position: relative;
+                }
+                ha-card::after {
+                  content: "{% if is_state('input_boolean.living_room_motion_override', 'off') %}🟢 Auto{% else %}🔴 Manual{% endif %}";
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  background: rgba(0,0,0,0.7);
+                  color: white;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75em;
+                  font-weight: bold;
+                }
+
+          - type: custom:mushroom-light-card
+            entity: light.kitchen
+            name: "Kitchen"
+            icon: mdi:chef-hat
+            layout: vertical
+            fill_container: true
+            primary_info: name
+            secondary_info: state
+            show_brightness_control: false
+            show_color_control: false
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/kitchen
+            card_mod:
+              style: |
+                ha-card {
+                  height: 120px;
+                  position: relative;
+                }
+                ha-card::after {
+                  content: "{% if is_state('input_boolean.kitchen_motion_override', 'off') %}🟢 Auto{% else %}🔴 Manual{% endif %}";
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  background: rgba(0,0,0,0.7);
+                  color: white;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75em;
+                  font-weight: bold;
+                }
+
+          - type: custom:mushroom-light-card
+            entity: light.dining_room
+            name: "Dining Room"
+            icon: mdi:silverware-fork-knife
+            layout: vertical
+            fill_container: true
+            primary_info: name
+            secondary_info: state
+            show_brightness_control: false
+            show_color_control: false
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/dining-room
+            card_mod:
+              style: |
+                ha-card {
+                  height: 120px;
+                  position: relative;
+                }
+                ha-card::after {
+                  content: "{% if is_state('input_boolean.dining_room_motion_override', 'off') %}🟢 Auto{% else %}🔴 Manual{% endif %}";
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  background: rgba(0,0,0,0.7);
+                  color: white;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75em;
+                  font-weight: bold;
+                }
+
+          # Second Floor Quick Access
+          - type: custom:mushroom-template-card
+            primary: "Upstairs"
+            secondary: "Master Bedroom • Office"
+            icon: mdi:stairs-up
+            icon_color: green
+            layout: vertical
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/master-bedroom
+            card_mod:
+              style: |
+                ha-card {
+                  height: 100px;
+                }
+
+          # Guest Rooms Quick Access
+          - type: custom:mushroom-template-card
+            primary: "Guest Rooms"
+            secondary: "Alpha • Beta • Basement"
+            icon: mdi:bed
+            icon_color: purple
+            layout: vertical
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/guest-rooms
+            card_mod:
+              style: |
+                ha-card {
+                  height: 100px;
+                }
+
+          # Quick Controls Row
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Music"
+                icon: mdi:music
+                icon_color: green
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/music
+              - type: custom:mushroom-template-card
+                primary: "Vacuum"
+                icon: mdi:robot-vacuum
+                icon_color: blue
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/vacuum
+              - type: custom:mushroom-template-card
+                primary: "Climate"
+                icon: mdi:thermometer
+                icon_color: orange
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/climate
+              - type: custom:mushroom-template-card
+                primary: "Lights"
+                icon: mdi:led-strip-variant
+                icon_color: pink
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/wled
+
+  # ===========================================
+  # LIVING ROOM DETAILED PAGE
+  # ===========================================
+  - title: "Living Room"
+    path: living-room
+    icon: mdi:sofa
+    type: sections
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          # Navigation Header
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "🛋️ Living Room"
+                icon: mdi:chevron-left
+                icon_color: blue
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/home
+                card_mod:
+                  style: |
+                    ha-card {
+                      font-size: 1.2em;
+                      font-weight: bold;
+                    }
+              - type: custom:mushroom-chips-card
+                chips:
+                  - type: weather
+                    entity: weather.home
+                    show_conditions: true
+                    show_temperature: true
+                alignment: end
+
+          # Main Lighting Control with Motion Override
+          - type: custom:mushroom-light-card
+            entity: light.living_room
+            name: "Living Room Lights"
+            icon: mdi:lightbulb-group
+            layout: vertical
+            fill_container: true
+            show_brightness_control: true
+            show_color_control: true
+            show_color_temp_control: true
+            tap_action:
+              action: more-info
+            card_mod:
+              style: |
+                ha-card {
+                  height: 200px;
+                }
+
+          # Motion Override Control
+          - type: custom:mushroom-entity-card
+            entity: input_boolean.living_room_motion_override
+            name: >
+              {% if is_state('input_boolean.living_room_motion_override', 'off') %}
+                🟢 AUTO LIGHTS
+              {% else %}
+                🔴 MANUAL CONTROL
+              {% endif %}
+            secondary_info: >
+              {% if is_state('input_boolean.living_room_motion_override', 'off') %}
+                Motion control active
+              {% else %}
+                Motion disabled
+              {% endif %}
+            icon: >
+              {% if is_state('input_boolean.living_room_motion_override', 'off') %}
+                mdi:motion-sensor
+              {% else %}
+                mdi:motion-sensor-off
+              {% endif %}
+            icon_color: >
+              {% if is_state('input_boolean.living_room_motion_override', 'off') %}
+                green
+              {% else %}
+                red
+              {% endif %}
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-card {
+                  height: 80px;
+                }
+
+          # Samsung TV Control
+          - type: custom:mushroom-media-player-card
+            entity: media_player.samsung_tv_livingroom
+            name: "Samsung TV"
+            icon: mdi:television
+            layout: vertical
+            fill_container: true
+            use_media_info: true
+            show_volume_level: false
+            media_controls:
+              - play_pause_stop
+            tap_action:
+              action: more-info
+            card_mod:
+              style: |
+                ha-card {
+                  height: 120px;
+                }
+
+          # Apple TV Control
+          - type: custom:mushroom-media-player-card
+            entity: media_player.living_room_apple_tv
+            name: "Apple TV"
+            icon: mdi:apple
+            layout: vertical
+            fill_container: true
+            use_media_info: true
+            media_controls:
+              - play_pause_stop
+              - previous_track
+              - next_track
+            card_mod:
+              style: |
+                ha-card {
+                  height: 120px;
+                }
+
+          # Scene Controls
+          - type: custom:mushroom-title-card
+            title: "Quick Scenes"
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Evening"
+                icon: mdi:weather-sunset
+                icon_color: orange
+                tap_action:
+                  action: call-service
+                  service: light.turn_on
+                  service_data:
+                    entity_id: light.living_room
+                    brightness: 180
+                    color_temp: 370
+              - type: custom:mushroom-template-card
+                primary: "Bright"
+                icon: mdi:brightness-7
+                icon_color: yellow
+                tap_action:
+                  action: call-service
+                  service: light.turn_on
+                  service_data:
+                    entity_id: light.living_room
+                    brightness: 255
+                    color_temp: 250
+              - type: custom:mushroom-template-card
+                primary: "Movie"
+                icon: mdi:movie
+                icon_color: purple
+                tap_action:
+                  action: call-service
+                  service: light.turn_on
+                  service_data:
+                    entity_id: light.living_room
+                    brightness: 50
+                    rgb_color: [100, 50, 150]
+              - type: custom:mushroom-template-card
+                primary: "Off"
+                icon: mdi:power
+                icon_color: grey
+                tap_action:
+                  action: call-service
+                  service: light.turn_off
+                  service_data:
+                    entity_id: light.living_room
+
+          # Quick Navigation
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Kitchen"
+                icon: mdi:chef-hat
+                icon_color: green
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/kitchen
+              - type: custom:mushroom-template-card
+                primary: "Music"
+                icon: mdi:music
+                icon_color: purple
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/music
+              - type: custom:mushroom-template-card
+                primary: "More"
+                icon: mdi:dots-horizontal
+                icon_color: blue
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/home
+
+  # ===========================================
+  # MUSIC CONTROL PAGE
+  # ===========================================
+  - title: "Music"
+    path: music
+    icon: mdi:music
+    type: sections
+    max_columns: 1
+    sections:
+      - type: grid
+        cards:
+          # Navigation Header
+          - type: custom:mushroom-template-card
+            primary: "🎵 Music Control"
+            icon: mdi:chevron-left
+            icon_color: blue
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/home
+
+          # Now Playing (Spotify)
+          - type: custom:mini-media-player
+            entity: media_player.spotify_jstuart0
+            name: "Now Playing"
+            artwork: cover
+            hide:
+              - volume
+              - mute
+            card_mod:
+              style: |
+                ha-card {
+                  height: 200px;
+                }
+
+          # Zone Control Title
+          - type: custom:mushroom-title-card
+            title: "Play in Rooms"
+            subtitle: "Tap rooms to select, use zone buttons for quick control"
+
+          # Quick Zone Buttons
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "All House"
+                icon: mdi:home-music
+                icon_color: green
+                tap_action:
+                  action: call-service
+                  service: script.music_all_house
+              - type: custom:mushroom-template-card
+                primary: "1st Floor"
+                icon: mdi:music-note
+                icon_color: blue
+                tap_action:
+                  action: call-service
+                  service: script.music_first_floor
+              - type: custom:mushroom-template-card
+                primary: "Stop All"
+                icon: mdi:stop
+                icon_color: red
+                tap_action:
+                  action: call-service
+                  service: script.music_stop_all
+
+          # Room Selection Grid (Placeholder - will be populated after HomePod discovery)
+          - type: custom:mushroom-template-card
+            primary: "Room Selection"
+            secondary: "HomePod discovery in progress"
+            icon: mdi:speaker
+            icon_color: orange
+
+  # ===========================================
+  # VACUUM CONTROL PAGE
+  # ===========================================
+  - title: "Vacuum"
+    path: vacuum
+    icon: mdi:robot-vacuum
+    type: sections
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          # Navigation Header
+          - type: custom:mushroom-template-card
+            primary: "🤖 Robot Vacuum"
+            icon: mdi:chevron-left
+            icon_color: blue
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/home
+
+          # Vacuum Status and Control
+          - type: custom:mushroom-vacuum-card
+            entity: vacuum.xiaomi_vacuum_cleaner
+            layout: vertical
+            fill_container: true
+            commands:
+              - start_pause
+              - stop
+              - locate
+              - clean_spot
+              - return_home
+            card_mod:
+              style: |
+                ha-card {
+                  height: 200px;
+                }
+
+          # Room-Specific Cleaning
+          - type: custom:mushroom-title-card
+            title: "Clean Specific Rooms"
+            subtitle: "First Floor Only"
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Living Room"
+                icon: mdi:sofa
+                icon_color: blue
+                tap_action:
+                  action: call-service
+                  service: script.vacuum_living_room
+              - type: custom:mushroom-template-card
+                primary: "Kitchen"
+                icon: mdi:chef-hat
+                icon_color: green
+                tap_action:
+                  action: call-service
+                  service: script.vacuum_kitchen
+              - type: custom:mushroom-template-card
+                primary: "Dining Room"
+                icon: mdi:silverware-fork-knife
+                icon_color: orange
+                tap_action:
+                  action: call-service
+                  service: script.vacuum_dining_room
+
+  # ===========================================
+  # CLIMATE CONTROL PAGE
+  # ===========================================
+  - title: "Climate"
+    path: climate
+    icon: mdi:thermometer
+    type: sections
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          # Navigation Header
+          - type: custom:mushroom-template-card
+            primary: "🌡️ Climate Control"
+            icon: mdi:chevron-left
+            icon_color: blue
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/home
+
+          # Thermostat Control
+          - type: custom:mushroom-climate-card
+            entity: climate.thermostat
+            layout: vertical
+            fill_container: true
+            show_temperature_control: true
+            hvac_modes:
+              - heat
+              - cool
+              - auto
+              - "off"
+            card_mod:
+              style: |
+                ha-card {
+                  height: 250px;
+                  font-size: 1.2em;
+                }
+
+          # Quick Temperature Presets
+          - type: custom:mushroom-title-card
+            title: "Quick Presets"
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Home"
+                secondary: "72°F"
+                icon: mdi:home-thermometer
+                icon_color: green
+                tap_action:
+                  action: call-service
+                  service: climate.set_temperature
+                  service_data:
+                    entity_id: climate.thermostat
+                    temperature: 72
+              - type: custom:mushroom-template-card
+                primary: "Away"
+                secondary: "68°F"
+                icon: mdi:car
+                icon_color: blue
+                tap_action:
+                  action: call-service
+                  service: climate.set_temperature
+                  service_data:
+                    entity_id: climate.thermostat
+                    temperature: 68
+              - type: custom:mushroom-template-card
+                primary: "Sleep"
+                secondary: "70°F"
+                icon: mdi:bed
+                icon_color: purple
+                tap_action:
+                  action: call-service
+                  service: climate.set_temperature
+                  service_data:
+                    entity_id: climate.thermostat
+                    temperature: 70
+
+  # ===========================================
+  # WLED EFFECTS PAGE
+  # ===========================================
+  - title: "WLED Effects"
+    path: wled
+    icon: mdi:led-strip-variant
+    type: sections
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          # Navigation Header
+          - type: custom:mushroom-template-card
+            primary: "🌈 WLED Effects"
+            icon: mdi:chevron-left
+            icon_color: blue
+            tap_action:
+              action: navigate
+              navigation_path: /tablet-dashboard/home
+
+          # Entertainment Center WLED
+          - type: custom:mushroom-light-card
+            entity: light.entertainment_center_2
+            name: "Entertainment Center"
+            layout: vertical
+            show_brightness_control: true
+            show_color_control: true
+            card_mod:
+              style: |
+                ha-card {
+                  height: 150px;
+                }
+
+          # Quick Presets
+          - type: custom:mushroom-title-card
+            title: "Quick Presets"
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Party"
+                icon: mdi:party-popper
+                icon_color: red
+                tap_action:
+                  action: call-service
+                  service: script.wled_party_mode
+              - type: custom:mushroom-template-card
+                primary: "Ambient"
+                icon: mdi:candle
+                icon_color: orange
+                tap_action:
+                  action: call-service
+                  service: script.wled_ambient_mode
+              - type: custom:mushroom-template-card
+                primary: "Night"
+                icon: mdi:weather-night
+                icon_color: blue
+                tap_action:
+                  action: call-service
+                  service: script.wled_night_mode
+              - type: custom:mushroom-template-card
+                primary: "Off"
+                icon: mdi:power
+                icon_color: grey
+                tap_action:
+                  action: call-service
+                  service: script.wled_off_all
+
+  # ===========================================
+  # WELCOME PAGE (Front Door Tablet)
+  # ===========================================
+  - title: "Welcome"
+    path: welcome
+    icon: mdi:home-heart
+    type: sections
+    max_columns: 1
+    sections:
+      - type: grid
+        cards:
+          # Welcome Header
+          - type: custom:mushroom-template-card
+            primary: "Welcome Home!"
+            secondary: "{{ now().strftime('%A, %B %d, %Y') }}"
+            icon: mdi:home
+            icon_color: green
+            layout: vertical
+            card_mod:
+              style: |
+                ha-card {
+                  height: 150px;
+                  font-size: 1.5em;
+                  text-align: center;
+                }
+
+          # Current Weather
+          - type: weather-forecast
+            entity: weather.home
+            forecast_type: daily
+            card_mod:
+              style: |
+                ha-card {
+                  height: 200px;
+                }
+
+          # Quick Access Buttons
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-template-card
+                primary: "Living Room"
+                icon: mdi:sofa
+                icon_color: blue
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/living-room
+              - type: custom:mushroom-template-card
+                primary: "Kitchen"
+                icon: mdi:chef-hat
+                icon_color: green
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/kitchen
+              - type: custom:mushroom-template-card
+                primary: "Guest Rooms"
+                icon: mdi:bed
+                icon_color: purple
+                tap_action:
+                  action: navigate
+                  navigation_path: /tablet-dashboard/guest-rooms
+
+          # Climate Quick Control
+          - type: custom:mushroom-climate-card
+            entity: climate.thermostat
+            layout: horizontal
+            show_temperature_control: true
+            card_mod:
+              style: |
+                ha-card {
+                  height: 80px;
+                }
+
+  # ===========================================
+  # RING CAMERA PAGE (Auto-displayed)
+  # ===========================================
+  - title: "Ring Camera"
+    path: ring-camera
+    icon: mdi:video
+    type: sections
+    max_columns: 1
+    sections:
+      - type: grid
+        cards:
+          # Full Screen Camera Feed
+          - type: picture-entity
+            entity: camera.ring_livestream
+            name: ""
+            show_name: false
+            show_state: false
+            camera_view: live
+            card_mod:
+              style: |
+                ha-card {
+                  height: 70vh;
+                  width: 100%;
+                  border: none;
+                  border-radius: 8px;
+                }
+
+          # Overlay Controls
+          - type: custom:mushroom-template-card
+            primary: "🔔 Someone at the door"
+            layout: horizontal
+            card_mod:
+              style: |
+                ha-card {
+                  background: rgba(0, 0, 0, 0.8);
+                  color: white;
+                  border-radius: 20px;
+                  text-align: center;
+                }
+
+          - type: custom:mushroom-template-card
+            primary: "Dismiss"
+            icon: mdi:close
+            icon_color: white
+            tap_action:
+              action: call-service
+              service: script.dismiss_ring_camera
+            card_mod:
+              style: |
+                ha-card {
+                  background: rgba(200, 50, 50, 0.9);
+                  color: white;
+                  border-radius: 15px;
+                  font-size: 1.2em;
+                  font-weight: bold;
+                  text-align: center;
+                }

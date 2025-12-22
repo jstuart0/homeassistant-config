@@ -1,0 +1,1145 @@
+- id: '1625502086076'
+  name: Master Bedroom Light
+  entities:
+    light.master_light_1:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 221.999
+      - 20
+      rgb_color:
+      - 204
+      - 219
+      - 255
+      xy_color:
+      - 0.28
+      - 0.288
+      friendly_name: Master Light 1
+      supported_features: 55
+      state: 'on'
+    light.master_light_2:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 221.999
+      - 20
+      rgb_color:
+      - 204
+      - 219
+      - 255
+      xy_color:
+      - 0.28
+      - 0.288
+      friendly_name: Master Light 2
+      supported_features: 55
+      state: 'on'
+    light.master_light_3:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 221.999
+      - 20
+      rgb_color:
+      - 204
+      - 219
+      - 255
+      xy_color:
+      - 0.28
+      - 0.288
+      friendly_name: Master Light 3
+      supported_features: 55
+      state: 'on'
+    light.master_light_4:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 255
+      hs_color:
+      - 221.999
+      - 20
+      rgb_color:
+      - 204
+      - 219
+      - 255
+      xy_color:
+      - 0.28
+      - 0.288
+      friendly_name: Master Light 4
+      supported_features: 55
+      state: 'on'
+- id: '1666399524783'
+  name: Living Room - Warm Moody Purple
+  entities:
+    light.living_room:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 157
+      hs_color:
+      - 38.382
+      - 53.333
+      rgb_color:
+      - 255
+      - 206
+      - 119
+      xy_color:
+      - 0.4595
+      - 0.4104
+      is_hue_group: true
+      hue_scenes:
+      - Bright
+      hue_type: room
+      lights:
+      - Front Center
+      - Rear Left
+      - Rear Right
+      - Rear Center
+      - Front Left
+      - Front Right
+      - Living room Tv
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Living room
+      supported_features: 40
+      state: 'on'
+    light.living_room_tv:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - None
+      - candle
+      - fire
+      - sunrise
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 259.118
+      - 80
+      rgb_color:
+      - 116
+      - 51
+      - 255
+      xy_color:
+      - 0.1988
+      - 0.0807
+      effect: None
+      mode: normal
+      dynamics: none
+      friendly_name: Living room Tv
+      supported_features: 44
+      state: 'on'
+    light.entertainment_center_2:
+      effect_list:
+      - Android
+      - Aurora
+      - Blends
+      - Blink
+      - Blink Rainbow
+      - Bouncing Balls
+      - Bpm
+      - Breathe
+      - Candle
+      - Candle Multi
+      - Candy Cane
+      - Chase
+      - Chase 2
+      - Chase 3
+      - Chase Flash
+      - Chase Flash Rnd
+      - Chase Rainbow
+      - Chase Random
+      - Chunchun
+      - Colorful
+      - Colorloop
+      - Colortwinkles
+      - Colorwaves
+      - Dancing Shadows
+      - Dissolve
+      - Dissolve Rnd
+      - Drip
+      - Dynamic
+      - Dynamic Smooth
+      - Fade
+      - Fairy
+      - Fairytwinkle
+      - Fill Noise
+      - Fire 2012
+      - Fire Flicker
+      - Fireworks
+      - Fireworks 1D
+      - Fireworks Starburst
+      - Flow
+      - Glitter
+      - Gradient
+      - Halloween
+      - Halloween Eyes
+      - Heartbeat
+      - ICU
+      - Juggle
+      - Lake
+      - Lighthouse
+      - Lightning
+      - Loading
+      - Meteor
+      - Meteor Smooth
+      - Multi Comet
+      - Noise 1
+      - Noise 2
+      - Noise 3
+      - Noise 4
+      - Noise Pal
+      - Oscillate
+      - Pacifica
+      - Palette
+      - Percent
+      - Phased
+      - Phased Noise
+      - Plasma
+      - Police
+      - Popcorn
+      - Pride 2015
+      - Railway
+      - Rain
+      - Rainbow
+      - Rainbow Runner
+      - Random Colors
+      - Ripple
+      - Ripple Rainbow
+      - Running
+      - Running Dual
+      - Saw
+      - Scan
+      - Scan Dual
+      - Scanner
+      - Scanner Dual
+      - Sine
+      - Sinelon
+      - Sinelon Dual
+      - Sinelon Rainbow
+      - Solid
+      - Solid Glitter
+      - Solid Pattern
+      - Solid Pattern Tri
+      - Sparkle
+      - Sparkle Dark
+      - Sparkle+
+      - Spots
+      - Spots Fade
+      - Stream
+      - Stream 2
+      - Strobe
+      - Strobe Mega
+      - Strobe Rainbow
+      - Sunrise
+      - Sweep
+      - Sweep Random
+      - TV Simulator
+      - Tetrix
+      - Theater
+      - Theater Rainbow
+      - Traffic Light
+      - Tri Fade
+      - Tri Wipe
+      - Twinkle
+      - Twinklecat
+      - Twinklefox
+      - Twinkleup
+      - Two Dots
+      - Washing Machine
+      - Wipe
+      - Wipe Random
+      supported_color_modes:
+      - rgbw
+      color_mode: rgbw
+      brightness: 128
+      hs_color:
+      - 299.542
+      - 51.373
+      rgb_color:
+      - 254
+      - 124
+      - 255
+      rgbw_color:
+      - 254
+      - 96
+      - 255
+      - 54
+      xy_color:
+      - 0.368
+      - 0.2
+      effect: Solid
+      icon: mdi:led-strip-variant
+      friendly_name: Entertainment Center
+      supported_features: 36
+      state: 'on'
+  metadata:
+    light.living_room:
+      entity_only: true
+    light.living_room_tv:
+      entity_only: true
+    light.entertainment_center_2:
+      entity_only: true
+- id: '1666400308045'
+  name: Living Room - Cool Moody Purple (Duplicate)
+  entities:
+    light.living_room:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 211
+      hs_color:
+      - 165
+      - 3.137
+      rgb_color:
+      - 247
+      - 255
+      - 253
+      xy_color:
+      - 0.3157
+      - 0.3313
+      is_hue_group: true
+      hue_scenes:
+      - Bright
+      hue_type: room
+      lights:
+      - Front Center
+      - Rear Left
+      - Rear Right
+      - Rear Center
+      - Front Left
+      - Front Right
+      - Living room Tv
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Living room
+      supported_features: 40
+      state: 'on'
+    light.living_room_tv:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - None
+      - candle
+      - fire
+      - sunrise
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 255
+      hs_color:
+      - 259.118
+      - 80
+      rgb_color:
+      - 116
+      - 51
+      - 255
+      xy_color:
+      - 0.1988
+      - 0.0807
+      effect: None
+      mode: normal
+      dynamics: none
+      friendly_name: Living room Tv
+      supported_features: 44
+      state: 'on'
+    light.entertainment_center_2:
+      effect_list:
+      - Android
+      - Aurora
+      - Blends
+      - Blink
+      - Blink Rainbow
+      - Bouncing Balls
+      - Bpm
+      - Breathe
+      - Candle
+      - Candle Multi
+      - Candy Cane
+      - Chase
+      - Chase 2
+      - Chase 3
+      - Chase Flash
+      - Chase Flash Rnd
+      - Chase Rainbow
+      - Chase Random
+      - Chunchun
+      - Colorful
+      - Colorloop
+      - Colortwinkles
+      - Colorwaves
+      - Dancing Shadows
+      - Dissolve
+      - Dissolve Rnd
+      - Drip
+      - Dynamic
+      - Dynamic Smooth
+      - Fade
+      - Fairy
+      - Fairytwinkle
+      - Fill Noise
+      - Fire 2012
+      - Fire Flicker
+      - Fireworks
+      - Fireworks 1D
+      - Fireworks Starburst
+      - Flow
+      - Glitter
+      - Gradient
+      - Halloween
+      - Halloween Eyes
+      - Heartbeat
+      - ICU
+      - Juggle
+      - Lake
+      - Lighthouse
+      - Lightning
+      - Loading
+      - Meteor
+      - Meteor Smooth
+      - Multi Comet
+      - Noise 1
+      - Noise 2
+      - Noise 3
+      - Noise 4
+      - Noise Pal
+      - Oscillate
+      - Pacifica
+      - Palette
+      - Percent
+      - Phased
+      - Phased Noise
+      - Plasma
+      - Police
+      - Popcorn
+      - Pride 2015
+      - Railway
+      - Rain
+      - Rainbow
+      - Rainbow Runner
+      - Random Colors
+      - Ripple
+      - Ripple Rainbow
+      - Running
+      - Running Dual
+      - Saw
+      - Scan
+      - Scan Dual
+      - Scanner
+      - Scanner Dual
+      - Sine
+      - Sinelon
+      - Sinelon Dual
+      - Sinelon Rainbow
+      - Solid
+      - Solid Glitter
+      - Solid Pattern
+      - Solid Pattern Tri
+      - Sparkle
+      - Sparkle Dark
+      - Sparkle+
+      - Spots
+      - Spots Fade
+      - Stream
+      - Stream 2
+      - Strobe
+      - Strobe Mega
+      - Strobe Rainbow
+      - Sunrise
+      - Sweep
+      - Sweep Random
+      - TV Simulator
+      - Tetrix
+      - Theater
+      - Theater Rainbow
+      - Traffic Light
+      - Tri Fade
+      - Tri Wipe
+      - Twinkle
+      - Twinklecat
+      - Twinklefox
+      - Twinkleup
+      - Two Dots
+      - Washing Machine
+      - Wipe
+      - Wipe Random
+      supported_color_modes:
+      - rgbw
+      color_mode: rgbw
+      brightness: 128
+      hs_color:
+      - 299.542
+      - 51.373
+      rgb_color:
+      - 254
+      - 124
+      - 255
+      rgbw_color:
+      - 254
+      - 96
+      - 255
+      - 54
+      xy_color:
+      - 0.368
+      - 0.2
+      effect: Solid
+      icon: mdi:led-strip-variant
+      friendly_name: Entertainment Center
+      supported_features: 36
+      state: 'on'
+  metadata:
+    light.living_room:
+      entity_only: true
+    light.living_room_tv:
+      entity_only: true
+    light.entertainment_center_2:
+      entity_only: true
+- id: '1666401004256'
+  name: Ravens
+  entities:
+    light.entertainment_center_2:
+      effect_list:
+      - Android
+      - Aurora
+      - Blends
+      - Blink
+      - Blink Rainbow
+      - Bouncing Balls
+      - Bpm
+      - Breathe
+      - Candle
+      - Candle Multi
+      - Candy Cane
+      - Chase
+      - Chase 2
+      - Chase 3
+      - Chase Flash
+      - Chase Flash Rnd
+      - Chase Rainbow
+      - Chase Random
+      - Chunchun
+      - Colorful
+      - Colorloop
+      - Colortwinkles
+      - Colorwaves
+      - Dancing Shadows
+      - Dissolve
+      - Dissolve Rnd
+      - Drip
+      - Dynamic
+      - Dynamic Smooth
+      - Fade
+      - Fairy
+      - Fairytwinkle
+      - Fill Noise
+      - Fire 2012
+      - Fire Flicker
+      - Fireworks
+      - Fireworks 1D
+      - Fireworks Starburst
+      - Flow
+      - Glitter
+      - Gradient
+      - Halloween
+      - Halloween Eyes
+      - Heartbeat
+      - ICU
+      - Juggle
+      - Lake
+      - Lighthouse
+      - Lightning
+      - Loading
+      - Meteor
+      - Meteor Smooth
+      - Multi Comet
+      - Noise 1
+      - Noise 2
+      - Noise 3
+      - Noise 4
+      - Noise Pal
+      - Oscillate
+      - Pacifica
+      - Palette
+      - Percent
+      - Phased
+      - Phased Noise
+      - Plasma
+      - Police
+      - Popcorn
+      - Pride 2015
+      - Railway
+      - Rain
+      - Rainbow
+      - Rainbow Runner
+      - Random Colors
+      - Ripple
+      - Ripple Rainbow
+      - Running
+      - Running Dual
+      - Saw
+      - Scan
+      - Scan Dual
+      - Scanner
+      - Scanner Dual
+      - Sine
+      - Sinelon
+      - Sinelon Dual
+      - Sinelon Rainbow
+      - Solid
+      - Solid Glitter
+      - Solid Pattern
+      - Solid Pattern Tri
+      - Sparkle
+      - Sparkle Dark
+      - Sparkle+
+      - Spots
+      - Spots Fade
+      - Stream
+      - Stream 2
+      - Strobe
+      - Strobe Mega
+      - Strobe Rainbow
+      - Sunrise
+      - Sweep
+      - Sweep Random
+      - TV Simulator
+      - Tetrix
+      - Theater
+      - Theater Rainbow
+      - Traffic Light
+      - Tri Fade
+      - Tri Wipe
+      - Twinkle
+      - Twinklecat
+      - Twinklefox
+      - Twinkleup
+      - Two Dots
+      - Washing Machine
+      - Wipe
+      - Wipe Random
+      supported_color_modes:
+      - rgbw
+      color_mode: rgbw
+      brightness: 128
+      hs_color:
+      - 299.542
+      - 51.373
+      rgb_color:
+      - 254
+      - 124
+      - 255
+      rgbw_color:
+      - 254
+      - 96
+      - 255
+      - 54
+      xy_color:
+      - 0.368
+      - 0.2
+      effect: Solid
+      icon: mdi:led-strip-variant
+      friendly_name: Entertainment Center
+      supported_features: 36
+      state: 'on'
+    select.entertainment_center_playlist_2:
+      options: []
+      icon: mdi:play-speed
+      friendly_name: Entertainment Center Playlist
+      state: unavailable
+    select.entertainment_center_preset_2:
+      options: []
+      icon: mdi:playlist-play
+      friendly_name: Entertainment Center Preset
+      state: unavailable
+    light.living_room_tv:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - None
+      - candle
+      - fire
+      - sunrise
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 207
+      hs_color:
+      - 256.232
+      - 81.176
+      rgb_color:
+      - 104
+      - 48
+      - 255
+      xy_color:
+      - 0.1869
+      - 0.0739
+      effect: None
+      mode: normal
+      dynamics: none
+      friendly_name: Living room Tv
+      supported_features: 44
+      state: 'on'
+    light.living_room:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: xy
+      brightness: 201
+      hs_color:
+      - 256.232
+      - 81.176
+      rgb_color:
+      - 104
+      - 48
+      - 255
+      xy_color:
+      - 0.1869
+      - 0.0739
+      is_hue_group: true
+      hue_scenes:
+      - Warm - Bright
+      hue_type: room
+      lights:
+      - Front Center
+      - Rear Left
+      - Rear Right
+      - Rear Center
+      - Front Left
+      - Front Right
+      - Living room Tv
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Living room
+      supported_features: 40
+      state: 'on'
+  metadata:
+    light.living_room:
+      entity_only: true
+- id: '1691623448590'
+  name: Eagles
+  entities:
+    light.dining_room:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      is_hue_group: true
+      hue_scenes:
+      - Bright
+      hue_type: room
+      lights:
+      - Dining Room Light - 4 -2
+      - Dining Room Light - 4-1
+      - Dining Room Light - 2
+      - Dining Room Light - 3
+      - Dining Room Light - 1
+      - Dining Room Stairs
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Dining Room
+      supported_features: 40
+      color_mode: xy
+      brightness: 225
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.323
+      - 0.329
+      state: 'on'
+    light.kitchen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      is_hue_group: true
+      hue_scenes:
+      - Bright
+      - Chill
+      hue_type: room
+      lights:
+      - Kitchen Island Light Dining Side
+      - Kitchen light - Front Right
+      - Kitchen Light - Back Left
+      - Kitchen Island window light
+      - Kitchen Light - Front Left
+      - Kitchen Light - Middle Left
+      - Kitchen Light - Back Right
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Kitchen
+      supported_features: 40
+      color_mode: xy
+      brightness: 225
+      hs_color:
+      - 112.698
+      - 74.118
+      rgb_color:
+      - 89
+      - 255
+      - 66
+      xy_color:
+      - 0.2173
+      - 0.6644
+      state: 'on'
+    light.kitchen_undercabinet_light:
+      effect_list:
+      - Android
+      - Aurora
+      - Blends
+      - Blink
+      - Blink Rainbow
+      - Bouncing Balls
+      - Bpm
+      - Breathe
+      - Candle
+      - Candle Multi
+      - Candy Cane
+      - Chase
+      - Chase 2
+      - Chase 3
+      - Chase Flash
+      - Chase Flash Rnd
+      - Chase Rainbow
+      - Chase Random
+      - Chunchun
+      - Colorful
+      - Colorloop
+      - Colortwinkles
+      - Colorwaves
+      - Dancing Shadows
+      - Dissolve
+      - Dissolve Rnd
+      - Drip
+      - Dynamic
+      - Dynamic Smooth
+      - Fade
+      - Fairy
+      - Fairytwinkle
+      - Fill Noise
+      - Fire 2012
+      - Fire Flicker
+      - Fireworks
+      - Fireworks 1D
+      - Fireworks Starburst
+      - Flow
+      - Glitter
+      - Gradient
+      - Halloween
+      - Halloween Eyes
+      - Heartbeat
+      - ICU
+      - Juggle
+      - Lake
+      - Lighthouse
+      - Lightning
+      - Loading
+      - Meteor
+      - Meteor Smooth
+      - Multi Comet
+      - Noise 1
+      - Noise 2
+      - Noise 3
+      - Noise 4
+      - Noise Pal
+      - Oscillate
+      - Pacifica
+      - Palette
+      - Percent
+      - Phased
+      - Phased Noise
+      - Plasma
+      - Police
+      - Popcorn
+      - Pride 2015
+      - Railway
+      - Rain
+      - Rainbow
+      - Rainbow Runner
+      - Random Colors
+      - Ripple
+      - Ripple Rainbow
+      - Running
+      - Running Dual
+      - Saw
+      - Scan
+      - Scan Dual
+      - Scanner
+      - Scanner Dual
+      - Sine
+      - Sinelon
+      - Sinelon Dual
+      - Sinelon Rainbow
+      - Solid
+      - Solid Glitter
+      - Solid Pattern
+      - Solid Pattern Tri
+      - Sparkle
+      - Sparkle Dark
+      - Sparkle+
+      - Spots
+      - Spots Fade
+      - Stream
+      - Stream 2
+      - Strobe
+      - Strobe Mega
+      - Strobe Rainbow
+      - Sunrise
+      - Sweep
+      - Sweep Random
+      - TV Simulator
+      - Tetrix
+      - Theater
+      - Theater Rainbow
+      - Traffic Light
+      - Tri Fade
+      - Tri Wipe
+      - Twinkle
+      - Twinklecat
+      - Twinklefox
+      - Twinkleup
+      - Two Dots
+      - Washing Machine
+      - Wipe
+      - Wipe Random
+      supported_color_modes:
+      - rgbw
+      icon: mdi:led-strip-variant
+      friendly_name: Under Cabinet Light
+      supported_features: 36
+      color_mode: rgbw
+      brightness: 255
+      hs_color:
+      - 104.895
+      - 56.078
+      rgb_color:
+      - 148
+      - 255
+      - 112
+      rgbw_color:
+      - 102
+      - 255
+      - 51
+      - 110
+      xy_color:
+      - 0.276
+      - 0.555
+      effect: Solid
+      state: 'on'
+    select.undercabinet_playlist:
+      options: []
+      icon: mdi:play-speed
+      friendly_name: Accent Light - Playlist
+      state: unavailable
+    select.accent_light_preset:
+      options: []
+      icon: mdi:playlist-play
+      friendly_name: Accent Light - Preset
+      state: unavailable
+    light.ambient_light:
+      effect_list:
+      - Android
+      - Aurora
+      - Blends
+      - Blink
+      - Blink Rainbow
+      - Bouncing Balls
+      - Bpm
+      - Breathe
+      - Candle
+      - Candle Multi
+      - Candy Cane
+      - Chase
+      - Chase 2
+      - Chase 3
+      - Chase Flash
+      - Chase Flash Rnd
+      - Chase Rainbow
+      - Chase Random
+      - Chunchun
+      - Colorful
+      - Colorloop
+      - Colortwinkles
+      - Colorwaves
+      - Dancing Shadows
+      - Dissolve
+      - Dissolve Rnd
+      - Drip
+      - Dynamic
+      - Dynamic Smooth
+      - Fade
+      - Fairy
+      - Fairytwinkle
+      - Fill Noise
+      - Fire 2012
+      - Fire Flicker
+      - Fireworks
+      - Fireworks 1D
+      - Fireworks Starburst
+      - Flow
+      - Glitter
+      - Gradient
+      - Halloween
+      - Halloween Eyes
+      - Heartbeat
+      - ICU
+      - Juggle
+      - Lake
+      - Lighthouse
+      - Lightning
+      - Loading
+      - Meteor
+      - Meteor Smooth
+      - Multi Comet
+      - Noise 1
+      - Noise 2
+      - Noise 3
+      - Noise 4
+      - Noise Pal
+      - Oscillate
+      - Pacifica
+      - Palette
+      - Percent
+      - Phased
+      - Phased Noise
+      - Plasma
+      - Police
+      - Popcorn
+      - Pride 2015
+      - Railway
+      - Rain
+      - Rainbow
+      - Rainbow Runner
+      - Random Colors
+      - Ripple
+      - Ripple Rainbow
+      - Running
+      - Running Dual
+      - Saw
+      - Scan
+      - Scan Dual
+      - Scanner
+      - Scanner Dual
+      - Sine
+      - Sinelon
+      - Sinelon Dual
+      - Sinelon Rainbow
+      - Solid
+      - Solid Glitter
+      - Solid Pattern
+      - Solid Pattern Tri
+      - Sparkle
+      - Sparkle Dark
+      - Sparkle+
+      - Spots
+      - Spots Fade
+      - Stream
+      - Stream 2
+      - Strobe
+      - Strobe Mega
+      - Strobe Rainbow
+      - Sunrise
+      - Sweep
+      - Sweep Random
+      - TV Simulator
+      - Tetrix
+      - Theater
+      - Theater Rainbow
+      - Traffic Light
+      - Tri Fade
+      - Tri Wipe
+      - Twinkle
+      - Twinklecat
+      - Twinklefox
+      - Twinkleup
+      - Two Dots
+      - Washing Machine
+      - Wipe
+      - Wipe Random
+      supported_color_modes:
+      - rgbw
+      entity_id:
+      - light.entertainment_center_2
+      - light.kitchen_undercabinet_light
+      icon: mdi:lightbulb-group
+      friendly_name: Ambient Light
+      supported_features: 36
+      color_mode: rgbw
+      brightness: 255
+      hs_color:
+      - 102.105
+      - 67.059
+      rgb_color:
+      - 135
+      - 255
+      - 84
+      rgbw_color:
+      - 109
+      - 255
+      - 47
+      - 55
+      xy_color:
+      - 0.268
+      - 0.602
+      effect: Solid
+      state: 'on'
+  metadata:
+    light.ambient_light:
+      entity_only: true
+  icon: mdi:bird

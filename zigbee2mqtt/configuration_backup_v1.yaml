@@ -1,0 +1,45 @@
+homeassistant: true
+mqtt:
+  server: mqtt://192.168.10.168:1883
+  user: mqtt
+  password: baddabbada
+serial:
+  port: /dev/ttyACM1
+  adapter: deconz
+frontend:
+  port: 8099
+devices:
+  '0x54ef441000496c3e':
+    friendly_name: UnderBed Motion
+  '0x00158d0008092cdd':
+    friendly_name: Switch
+  '0x00158d0006f16070':
+    friendly_name: Leak Laundy Room
+  '0x00158d0006d6b064':
+    friendly_name: Vibration Dryer
+  '0x00158d0007059525':
+    friendly_name: Vibration - Mail
+  '0x00158d0006fe241d':
+    friendly_name: Door - Front
+  '0x00158d0006ea54a3':
+    friendly_name: Leak - Water Heater
+  '0x00158d0006f1581c':
+    friendly_name: Leak - AC
+  '0x00158d0007006c0f':
+    friendly_name: Door - Back
+  '0x00158d0006e1b815':
+    friendly_name: Vibration - Washer
+  '0x00158d000542add5':
+    friendly_name: Office Cube
+  '0x003c84fffeb6e805':
+    friendly_name: LivingRoomKnob
+  '0x54ef441000496ec1':
+    friendly_name: Motion - Basement Stairs
+  '0xffff000fe7fa9ff0':
+    friendly_name: Hallway 2
+  '0x5c0272fffe67cb5a':
+    friendly_name: innr Outlet 1
+  '0x54ef44100049714d':
+    friendly_name: Basement Hallway 2
+  '0x00158d00090eb9f0':
+    friendly_name: 'Server Rack - Temperature '

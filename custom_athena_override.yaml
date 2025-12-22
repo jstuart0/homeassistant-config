@@ -1,0 +1,15 @@
+# Working Athena LLM Conversation Override - Properly passes text
+conversation:
+  intents:
+    AthenaCatchAll:
+      - "{text}"
+
+intent_script:
+  AthenaCatchAll:
+    speech:
+      type: plain
+      text: "Processing your request..."
+    action:
+      - service: rest_command.athena_llm_complex
+        data:
+          text: "{{ text }}"

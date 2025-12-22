@@ -1,0 +1,23 @@
+# REST Commands for Project Athena LLM Integration
+rest_command:
+  athena_llm_simple:
+    url: "http://192.168.10.62:5000/simple_command"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "command": "{{ states('input_text.last_voice_command') }}",
+        "source_device": "{{ states('input_text.last_voice_device') if states('input_text.last_voice_device') != 'unknown' else None }}"
+      }
+
+  athena_llm_complex:
+    url: "http://192.168.10.62:5000/process_command"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "command": "{{ states('input_text.last_voice_command') }}",
+        "source_device": "{{ states('input_text.last_voice_device') if states('input_text.last_voice_device') != 'unknown' else None }}"
+      }

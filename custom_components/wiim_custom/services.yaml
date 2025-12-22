@@ -1,0 +1,73 @@
+command:
+  name: Command
+  description: Execute various wiim-specific commands on the player.
+  fields:
+    entity_id:
+      name: Entity ID
+      description: Entity ID of the player against which the command wil be execuded.
+      example: media_player.sound_room1
+      required: true
+      selector:
+        entity:
+          integration: wiim_custom
+    command:
+      name: Command
+      description:
+      example: Update
+      required: true
+      selector:
+        select:
+          options:
+            - rescan
+            - reboot
+    notify:
+      name: Notification
+      description: Displays the result of the command as a persistent notification in Lovelace UI (optional, defaults to True). Set to False during automations to avoid seeing these.
+      example: false
+      required: false
+      default: true
+      selector:
+        boolean:
+        
+play_url:
+  name: Play URL
+  description: Play URL file.
+  fields:
+    entity_id:
+      name: Entity ID
+      description: Entity ID of the player on which the playback wil be execuded.
+      example: media_player.sound_room1
+      required: true
+      selector:
+        entity:
+          integration: wiim_custom
+    url:
+      name: URL
+      description: URL string
+      example: http://xyz.com/test.mp3
+      required: true
+      selector:
+        text:
+preset:
+  name: Preset
+  description: Recall content preset from the device.
+  fields:
+    entity_id:
+      name: Entity ID
+      description: Entity ID of the player for which the preset will be recalled.
+      example: media_player.sound_room1
+      required: true
+      selector:
+        entity:
+          integration: wiim_custom
+    preset:
+      name: Preset
+      description: Content preset number on the device
+      example: 1
+      required: true
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 12
+          mode: box

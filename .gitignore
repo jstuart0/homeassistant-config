@@ -1,0 +1,45 @@
+# Secrets and credentials
+secrets.yaml
+*.august.conf
+
+# Database files
+*.db
+
+# Log files
+*.log
+*.log.*
+home-assistant.log*
+
+# Backup files
+*.backup
+*.backup-*
+*.bak
+*.bak.*
+*.broken
+*.test
+*.old
+
+# Temporary files
+.ha_run.lock
+tmp/
+tts/
+deps/
+.cloud/
+cloud/
+
+# Storage (contains auth tokens and transient state)
+.storage/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

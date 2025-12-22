@@ -1,0 +1,738 @@
+binary_sensor.4_in_1_sensor_home_security_tampering_product_cover_removed:
+  disabled: true
+binary_sensor.4_in_1_sensor_low_battery_level:
+  disabled: true
+binary_sensor.espresense_office:
+  disabled: true
+binary_sensor.genesis_disk_0_health:
+  disabled: true
+binary_sensor.homeview_kitchen_is_dark:
+  disabled: true
+binary_sensor.homeview_kitchen_motion:
+  disabled: true
+binary_sensor.living_room_microphone:
+  disabled: true
+binary_sensor.livingroommain_low_battery_level:
+  disabled: true
+binary_sensor.low_battery_level_motion_master_bedroom:
+  disabled: true
+binary_sensor.master_bedroom_home_security_tampering_product_cover_removed:
+  disabled: true
+binary_sensor.motion_kitchen:
+  disabled: false
+binary_sensor.motion_kitchen_low_battery_level:
+  disabled: true
+binary_sensor.motion_livingroom2_low_battery_level:
+  disabled: true
+binary_sensor.motion_livingroom_1:
+  disabled: false
+binary_sensor.motion_livingroom_front:
+  disabled: true
+binary_sensor.motion_master_bedroom:
+  disabled: false
+binary_sensor.motion_office:
+  disabled: false
+binary_sensor.motion_office_2:
+  disabled: false
+binary_sensor.node_6_home_security_tampering_product_cover_removed:
+  disabled: true
+binary_sensor.office_is_dark:
+  disabled: true
+binary_sensor.office_motion:
+  disabled: false
+binary_sensor.office_motion_vibration_low_battery_level:
+  disabled: true
+binary_sensor.refrigerator_door:
+  disabled: false
+binary_sensor.roborock_vacuum_a15_mop_attached:
+  disabled: true
+binary_sensor.roborock_vacuum_a15_water_box_attached:
+  disabled: true
+binary_sensor.roborock_vacuum_a15_water_shortage:
+  disabled: true
+binary_sensor.shelly_1_kitchenisland_firmware_update:
+  disabled: true
+binary_sensor.shelly_1_kitchenisland_input_0:
+  disabled: true
+binary_sensor.shelly_1_kitchenisland_longpush_0:
+  disabled: true
+binary_sensor.shelly_1_kitchenisland_shortpush_0:
+  disabled: true
+binary_sensor.szrm197097p_cooktop_status:
+  disabled: false
+binary_sensor.szrm197097p_remote_enabled:
+  disabled: true
+button.4_in_1_sensor_ping:
+  disabled: true
+button.entertainment_center_restart_2:
+  disabled: true
+button.espresense_office_restart:
+  disabled: true
+button.front_door_ping:
+  disabled: true
+button.livingroommain_ping:
+  disabled: true
+button.motion_2_ping:
+  disabled: true
+button.motion_and_vibration_sensor_ping:
+  disabled: true
+button.motion_bedroom_ping:
+  disabled: true
+button.shelly_1_kitchenisland_update_firmware:
+  disabled: true
+button.underbedlight_restart_2:
+  disabled: true
+button.wled_restart:
+  disabled: true
+camera.homeview_kitchen_high:
+  disabled: true
+camera.office_high:
+  disabled: false
+device_tracker.light_master_bedroom_1:
+  disabled: true
+device_tracker.shelly1_8caab56e4264:
+  disabled: true
+device_tracker.sonos_sub:
+  disabled: true
+light.entertainment_center_2:
+  disabled: true
+light.kitchen:
+  disabled: false
+light.kitchen_back_left:
+  disabled: true
+light.kitchen_back_right:
+  disabled: true
+light.kitchen_front_left:
+  disabled: true
+light.kitchen_front_right:
+  disabled: true
+light.kitchen_island:
+  disabled: false
+light.kitchen_island_dr_side:
+  disabled: true
+light.kitchen_island_window_side:
+  disabled: true
+light.kitchen_middle_left:
+  disabled: true
+light.kitchen_middle_right:
+  disabled: true
+light.living_room:
+  disabled: false
+light.living_room_tv:
+  disabled: false
+light.lr_front_center:
+  disabled: true
+light.lr_front_left:
+  disabled: true
+light.lr_front_right:
+  disabled: true
+light.lr_rear_center:
+  disabled: true
+light.lr_rear_left:
+  disabled: true
+light.lr_rear_right:
+  disabled: true
+light.master_light_1:
+  disabled: true
+light.master_light_2:
+  disabled: true
+light.master_light_3:
+  disabled: true
+light.master_light_4:
+  disabled: true
+light.office:
+  disabled: false
+light.office_door_left:
+  disabled: true
+light.office_door_right_light:
+  disabled: true
+light.office_window_left_light:
+  disabled: true
+light.office_window_right_light:
+  disabled: true
+light.underbedlight_2:
+  disabled: false
+light.wled:
+  disabled: false
+media_player.homeview_kitchen_speaker:
+  disabled: true
+media_player.living_room:
+  disabled: false
+media_player.living_room_2:
+  disabled: true
+media_player.office_speaker:
+  disabled: false
+media_player.surround_1:
+  disabled: true
+media_player.surround_2_2:
+  disabled: true
+media_player.sync_box:
+  disabled: false
+media_player.tv_samsung_q80_series_75:
+  disabled: true
+number.entertainment_center_intensity_2:
+  disabled: true
+number.entertainment_center_speed_2:
+  disabled: true
+number.espresense_office_absorption:
+  disabled: true
+number.espresense_office_max_distance:
+  disabled: true
+number.homeview_kitchen_microphone_level:
+  disabled: true
+number.living_room_audio_delay:
+  disabled: true
+number.living_room_bass:
+  disabled: true
+number.living_room_sub_gain:
+  disabled: true
+number.living_room_treble:
+  disabled: true
+number.office_microphone_level:
+  disabled: true
+number.underbedlight_intensity_2:
+  disabled: true
+number.underbedlight_speed_2:
+  disabled: true
+number.wled_intensity:
+  disabled: true
+number.wled_speed:
+  disabled: true
+remote.living_room_2:
+  disabled: true
+scene.kitchen_bright:
+  disabled: true
+scene.kitchen_chill:
+  disabled: true
+scene.living_room_bright:
+  disabled: true
+select.entertainment_center_color_palette_2:
+  disabled: true
+select.entertainment_center_live_override_2:
+  disabled: true
+select.entertainment_center_playlist_2:
+  disabled: true
+select.entertainment_center_preset_2:
+  disabled: true
+select.homeview_kitchen_infrared_mode:
+  disabled: true
+select.homeview_kitchen_recording_mode:
+  disabled: true
+select.office_infrared_mode:
+  disabled: true
+select.office_recording_mode:
+  disabled: true
+select.underbedlight_color_palette_2:
+  disabled: true
+select.underbedlight_live_override_2:
+  disabled: true
+select.underbedlight_playlist_2:
+  disabled: true
+select.underbedlight_preset_2:
+  disabled: true
+select.wled_color_palette:
+  disabled: true
+select.wled_live_override:
+  disabled: true
+select.wled_playlist:
+  disabled: true
+select.wled_preset:
+  disabled: true
+sensor.3d_printer_octoprint_current:
+  disabled: true
+sensor.3d_printer_octoprint_current_consumption:
+  disabled: true
+sensor.3d_printer_octoprint_today_s_consumption:
+  disabled: true
+sensor.3d_printer_octoprint_total_consumption:
+  disabled: true
+sensor.3d_printer_octoprint_voltage:
+  disabled: true
+sensor.4_in_1_sensor_air_temperature:
+  disabled: false
+sensor.4_in_1_sensor_battery_level:
+  disabled: true
+sensor.4_in_1_sensor_humidity:
+  disabled: false
+sensor.4_in_1_sensor_illuminance:
+  disabled: false
+sensor.acurite_515_af_1688_b:
+  disabled: true
+sensor.acurite_515_af_1688_t:
+  disabled: false
+sensor.acurite_515_ar_1289_b:
+  disabled: true
+sensor.acurite_515_ar_1289_t:
+  disabled: false
+sensor.apple_tv_current:
+  disabled: true
+sensor.apple_tv_current_consumption:
+  disabled: true
+sensor.apple_tv_today_s_consumption:
+  disabled: true
+sensor.apple_tv_total_consumption:
+  disabled: true
+sensor.apple_tv_voltage:
+  disabled: true
+sensor.battery_level_motion_master_bedroom:
+  disabled: true
+sensor.cable_modem_current:
+  disabled: true
+sensor.cable_modem_current_consumption:
+  disabled: true
+sensor.cable_modem_today_s_consumption:
+  disabled: true
+sensor.cable_modem_total_consumption:
+  disabled: true
+sensor.cable_modem_voltage:
+  disabled: true
+sensor.computer_accessories_current:
+  disabled: true
+sensor.computer_accessories_current_consumption:
+  disabled: true
+sensor.computer_accessories_today_s_consumption:
+  disabled: true
+sensor.computer_accessories_total_consumption:
+  disabled: true
+sensor.computer_accessories_voltage:
+  disabled: true
+sensor.entertainment_center_estimated_current_2:
+  disabled: true
+sensor.entertainment_center_led_count_2:
+  disabled: true
+sensor.entertainment_center_max_current_2:
+  disabled: true
+sensor.espresense_office_free_memory:
+  disabled: true
+sensor.espresense_office_uptime:
+  disabled: true
+sensor.genesis_recording_capacity:
+  disabled: true
+sensor.genesis_resolution_4k_video:
+  disabled: true
+sensor.genesis_resolution_free_space:
+  disabled: true
+sensor.genesis_resolution_hd_video:
+  disabled: true
+sensor.genesis_storage_utilization:
+  disabled: true
+sensor.genesis_type_continuous_video:
+  disabled: true
+sensor.genesis_type_detections_video:
+  disabled: true
+sensor.genesis_type_timelapse_video:
+  disabled: true
+sensor.genesis_uptime:
+  disabled: false
+sensor.home_assistant_current:
+  disabled: true
+sensor.home_assistant_current_consumption:
+  disabled: true
+sensor.home_assistant_today_s_consumption:
+  disabled: true
+sensor.home_assistant_total_consumption:
+  disabled: true
+sensor.home_assistant_voltage:
+  disabled: true
+sensor.homeview_kitchen_disk_write_rate:
+  disabled: true
+sensor.homeview_kitchen_oldest_recording:
+  disabled: true
+sensor.homeview_kitchen_storage_used:
+  disabled: true
+sensor.hue_bridge_current:
+  disabled: true
+sensor.hue_bridge_current_consumption:
+  disabled: true
+sensor.hue_bridge_today_s_consumption:
+  disabled: true
+sensor.hue_bridge_total_consumption:
+  disabled: true
+sensor.hue_bridge_voltage:
+  disabled: true
+sensor.humidity_living_room:
+  disabled: false
+sensor.humidity_master_bedroom:
+  disabled: false
+sensor.illuminance_living_room:
+  disabled: false
+sensor.illuminance_master_bedroom:
+  disabled: false
+sensor.living_room_audio_input_format:
+  disabled: true
+sensor.livingroommain_battery_level:
+  disabled: true
+sensor.monitor_current:
+  disabled: true
+sensor.monitor_current_2:
+  disabled: true
+sensor.monitor_current_3:
+  disabled: true
+sensor.monitor_current_consumption:
+  disabled: true
+sensor.monitor_current_consumption_2:
+  disabled: true
+sensor.monitor_current_consumption_3:
+  disabled: true
+sensor.monitor_today_s_consumption:
+  disabled: true
+sensor.monitor_today_s_consumption_2:
+  disabled: true
+sensor.monitor_today_s_consumption_3:
+  disabled: true
+sensor.monitor_total_consumption:
+  disabled: true
+sensor.monitor_total_consumption_2:
+  disabled: true
+sensor.monitor_total_consumption_3:
+  disabled: true
+sensor.monitor_voltage:
+  disabled: true
+sensor.monitor_voltage_2:
+  disabled: true
+sensor.monitor_voltage_3:
+  disabled: true
+sensor.motion_kitchen_battery_level:
+  disabled: true
+sensor.motion_livingroom2_battery_level:
+  disabled: true
+sensor.node_6_node_status:
+  disabled: true
+sensor.office_disk_write_rate:
+  disabled: true
+sensor.office_motion_vibration_battery_level:
+  disabled: true
+sensor.office_oldest_recording:
+  disabled: true
+sensor.office_storage_used:
+  disabled: true
+sensor.port_replicator_current:
+  disabled: true
+sensor.port_replicator_current_consumption:
+  disabled: true
+sensor.port_replicator_today_s_consumption:
+  disabled: true
+sensor.port_replicator_total_consumption:
+  disabled: true
+sensor.port_replicator_voltage:
+  disabled: true
+sensor.power_strip_accessories_current:
+  disabled: true
+sensor.power_strip_accessories_current_consumption:
+  disabled: true
+sensor.power_strip_accessories_today_s_consumption:
+  disabled: true
+sensor.power_strip_accessories_total_consumption:
+  disabled: true
+sensor.power_strip_accessories_voltage:
+  disabled: true
+sensor.ps5_current:
+  disabled: true
+sensor.ps5_current_consumption:
+  disabled: true
+sensor.ps5_today_s_consumption:
+  disabled: true
+sensor.ps5_total_consumption:
+  disabled: true
+sensor.ps5_voltage:
+  disabled: true
+sensor.roborock_vacuum_a15_current_clean_area:
+  disabled: true
+sensor.roborock_vacuum_a15_current_clean_duration:
+  disabled: true
+sensor.roborock_vacuum_a15_filter_left:
+  disabled: true
+sensor.roborock_vacuum_a15_last_clean_area:
+  disabled: true
+sensor.roborock_vacuum_a15_last_clean_duration:
+  disabled: true
+sensor.roborock_vacuum_a15_last_clean_end:
+  disabled: true
+sensor.roborock_vacuum_a15_last_clean_start:
+  disabled: true
+sensor.roborock_vacuum_a15_main_brush_left:
+  disabled: true
+sensor.roborock_vacuum_a15_sensor_dirty_left:
+  disabled: true
+sensor.roborock_vacuum_a15_side_brush_left:
+  disabled: true
+sensor.roborock_vacuum_a15_total_clean_area:
+  disabled: true
+sensor.roborock_vacuum_a15_total_clean_count:
+  disabled: true
+sensor.roborock_vacuum_a15_total_duration:
+  disabled: true
+sensor.roborock_vacuum_a15_total_dust_collection_count:
+  disabled: true
+sensor.sonos_sub_current:
+  disabled: true
+sensor.sonos_sub_current_consumption:
+  disabled: true
+sensor.sonos_sub_today_s_consumption:
+  disabled: true
+sensor.sonos_sub_total_consumption:
+  disabled: true
+sensor.sonos_sub_voltage:
+  disabled: true
+sensor.speakers_current:
+  disabled: true
+sensor.speakers_current_consumption:
+  disabled: true
+sensor.speakers_today_s_consumption:
+  disabled: true
+sensor.speakers_total_consumption:
+  disabled: true
+sensor.speakers_voltage:
+  disabled: true
+sensor.syn_box_current:
+  disabled: true
+sensor.syn_box_current_consumption:
+  disabled: true
+sensor.syn_box_today_s_consumption:
+  disabled: true
+sensor.syn_box_total_consumption:
+  disabled: true
+sensor.syn_box_voltage:
+  disabled: true
+sensor.szrm197097p_cook_mode:
+  disabled: false
+sensor.szrm197097p_cook_time_remaining:
+  disabled: true
+sensor.szrm197097p_display_temperature:
+  disabled: true
+sensor.szrm197097p_kitchen_timer:
+  disabled: false
+sensor.szrm197097p_raw_temperature:
+  disabled: true
+sensor.szrm197097p_user_temp_offset:
+  disabled: true
+sensor.temperature_living_room:
+  disabled: false
+sensor.temperature_master_bedroom:
+  disabled: false
+sensor.tv_sonos_light_bar_current:
+  disabled: true
+sensor.tv_sonos_light_bar_current_consumption:
+  disabled: true
+sensor.tv_sonos_light_bar_today_s_consumption:
+  disabled: true
+sensor.tv_sonos_light_bar_total_consumption:
+  disabled: true
+sensor.tv_sonos_light_bar_voltage:
+  disabled: true
+sensor.udm_pro_current:
+  disabled: true
+sensor.udm_pro_current_consumption:
+  disabled: true
+sensor.udm_pro_today_s_consumption:
+  disabled: true
+sensor.udm_pro_total_consumption:
+  disabled: true
+sensor.udm_pro_voltage:
+  disabled: true
+sensor.ultraviolet_living_room:
+  disabled: false
+sensor.underbedlight_estimated_current_2:
+  disabled: true
+sensor.underbedlight_led_count_2:
+  disabled: true
+sensor.underbedlight_max_current_2:
+  disabled: true
+sensor.unifi_24_port_switch_current:
+  disabled: true
+sensor.unifi_24_port_switch_current_consumption:
+  disabled: true
+sensor.unifi_24_port_switch_today_s_consumption:
+  disabled: true
+sensor.unifi_24_port_switch_total_consumption:
+  disabled: true
+sensor.unifi_24_port_switch_voltage:
+  disabled: true
+sensor.unifi_poe_switch_current:
+  disabled: true
+sensor.unifi_poe_switch_current_consumption:
+  disabled: true
+sensor.unifi_poe_switch_today_s_consumption:
+  disabled: true
+sensor.unifi_poe_switch_total_consumption:
+  disabled: true
+sensor.unifi_poe_switch_voltage:
+  disabled: true
+sensor.wled_estimated_current:
+  disabled: true
+sensor.wled_led_count:
+  disabled: true
+sensor.wled_max_current:
+  disabled: true
+switch.3d_printer_octoprint:
+  disabled: true
+switch.apple_tv:
+  disabled: true
+switch.back_door_light:
+  disabled: false
+switch.cable_modem:
+  disabled: true
+switch.computer_accessories:
+  disabled: true
+switch.computer_accessories_led:
+  disabled: true
+switch.entertainment_center_nightlight_2:
+  disabled: true
+switch.entertainment_center_reverse_2:
+  disabled: true
+switch.entertainment_center_sync_receive_2:
+  disabled: true
+switch.entertainment_center_sync_send_2:
+  disabled: true
+switch.espresense_office_active_scan:
+  disabled: true
+switch.espresense_office_arduino_ota:
+  disabled: true
+switch.espresense_office_auto_update:
+  disabled: true
+switch.espresense_office_ota_update:
+  disabled: true
+switch.espresense_office_prerelease:
+  disabled: true
+switch.espresense_office_status_led:
+  disabled: true
+switch.home_assistant:
+  disabled: true
+switch.homeview_kitchen_hdr_mode:
+  disabled: true
+switch.homeview_kitchen_overlay_show_bitrate:
+  disabled: true
+switch.homeview_kitchen_overlay_show_date:
+  disabled: true
+switch.homeview_kitchen_overlay_show_logo:
+  disabled: true
+switch.homeview_kitchen_overlay_show_name:
+  disabled: true
+switch.homeview_kitchen_privacy_mode:
+  disabled: true
+switch.homeview_kitchen_status_light_on:
+  disabled: true
+switch.homeview_kitchen_system_sounds:
+  disabled: true
+switch.hue_bridge:
+  disabled: true
+switch.kitchen_main_light:
+  disabled: true
+switch.master_bedroom_fan:
+  disabled: false
+switch.monitor:
+  disabled: true
+switch.monitor_2:
+  disabled: true
+switch.monitor_3:
+  disabled: true
+switch.office_hdr_mode:
+  disabled: true
+switch.office_overlay_show_bitrate:
+  disabled: true
+switch.office_overlay_show_date:
+  disabled: true
+switch.office_overlay_show_logo:
+  disabled: true
+switch.office_overlay_show_name:
+  disabled: true
+switch.office_privacy_mode:
+  disabled: false
+switch.office_status_light_on:
+  disabled: true
+switch.office_system_sounds:
+  disabled: true
+switch.port_replicator:
+  disabled: true
+switch.power_strip_accessories:
+  disabled: true
+switch.ps5:
+  disabled: true
+switch.shelly_1_kitchenisland_relay_0:
+  disabled: true
+switch.shelly_2_5_lrfanporchlight_relay_0:
+  disabled: true
+switch.shelly_2_5_lrfanporchlight_relay_1:
+  disabled: true
+switch.shelly_2_5_masterbedroom_relay_0:
+  disabled: true
+switch.shelly_2_5_office_relay_0:
+  disabled: true
+switch.shelly_2_5_office_relay_1:
+  disabled: true
+switch.sonos_living_room_crossfade:
+  disabled: true
+switch.sonos_living_room_night_sound:
+  disabled: true
+switch.sonos_living_room_speech_enhancement:
+  disabled: true
+switch.sonos_living_room_subwoofer_enabled:
+  disabled: true
+switch.sonos_living_room_surround_enabled:
+  disabled: true
+switch.sonos_sub:
+  disabled: true
+switch.speakers:
+  disabled: true
+switch.syn_box:
+  disabled: true
+switch.szrm197097p_sabbath_mode:
+  disabled: true
+switch.tp_link_power_strip_d3b0_led:
+  disabled: true
+switch.tp_link_power_strip_e958_led:
+  disabled: true
+switch.tp_link_power_strip_efe9_led:
+  disabled: true
+switch.tv_sonos_light_bar:
+  disabled: true
+switch.udm_pro:
+  disabled: true
+switch.underbedlight_nightlight_2:
+  disabled: true
+switch.underbedlight_reverse_2:
+  disabled: true
+switch.underbedlight_sync_receive_2:
+  disabled: true
+switch.underbedlight_sync_send_2:
+  disabled: true
+switch.unifi_24_port_switch:
+  disabled: true
+switch.unifi_poe_switch_2:
+  disabled: true
+switch.usb_outlet_socket_1:
+  disabled: true
+switch.usb_outlet_socket_2:
+  disabled: true
+switch.usb_outlet_socket_3:
+  disabled: true
+switch.wifi_power_strip_socket_1:
+  disabled: true
+switch.wifi_power_strip_socket_2:
+  disabled: true
+switch.wifi_power_strip_socket_3:
+  disabled: true
+switch.wifi_power_strip_socket_4:
+  disabled: true
+switch.wifi_power_strip_socket_5:
+  disabled: true
+switch.wled_nightlight:
+  disabled: true
+switch.wled_reverse:
+  disabled: false
+switch.wled_sync_receive:
+  disabled: true
+switch.wled_sync_send:
+  disabled: true
+update.entertainment_center_firmware_2:
+  disabled: true
+update.genesis:
+  disabled: true
+update.underbedlight_firmware_2:
+  disabled: true
+update.wled_firmware:
+  disabled: true
+vacuum.roborock_vacuum_a15:
+  disabled: false
+water_heater.szrm197097p_oven:
+  disabled: true

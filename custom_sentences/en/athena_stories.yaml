@@ -1,0 +1,33 @@
+language: en
+intents:
+  AthenaStoryRequest:
+    data:
+      - sentences:
+          - tell me a story [about] {topic}
+          - can you tell me a story [about] {topic}
+          - I want to hear a story [about] {topic}
+          - story time [about] {topic}
+          - tell me a {animal} story
+          - I need a story
+          - tell me a story
+          - story time
+    lists:
+      topic:
+        - dogs
+        - cats
+        - animals
+        - adventure
+        - mystery
+        - fantasy
+        - space
+        - pirates
+        - dragons
+      animal:
+        - dog
+        - cat
+        - bear
+        - rabbit
+        - elephant
+        - lion
+        - tiger
+        - monkey

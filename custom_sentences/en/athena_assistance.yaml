@@ -1,0 +1,34 @@
+language: en
+intents:
+  AthenaGeneralHelp:
+    data:
+      - sentences:
+          - help me [with] {task}
+          - I need help [with] {task}
+          - can you help me [with] {task}
+          - assist me [with] {task}
+          - help me create {atmosphere}
+          - create a {atmosphere} atmosphere
+          - set the mood for {atmosphere}
+          - make it feel {feeling}
+    lists:
+      task:
+        - cooking
+        - cleaning
+        - relaxing
+        - sleeping
+        - working
+        - studying
+      atmosphere:
+        - relaxing
+        - romantic
+        - energetic
+        - calm
+        - cozy
+        - peaceful
+      feeling:
+        - calm
+        - energetic
+        - peaceful
+        - cozy
+        - relaxed

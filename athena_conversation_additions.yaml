@@ -1,0 +1,29 @@
+# Add these to configuration.yaml to enable conversation intents for Athena capture
+
+# Conversation intents - add to existing conversation section if any
+conversation:
+  intents:
+    AthenaCatchAll:
+      - "{text}"
+      - "help me {text}"
+      - "can you {text}"
+      - "please {text}"
+      - "I want to {text}"
+      - "I need to {text}"
+
+# Intent scripts - add to existing intent_script section if any
+intent_script:
+  # Catch-all intent to capture any conversation
+  AthenaCatchAll:
+    speech:
+      text: "I'm processing your request..."
+    action:
+      - service: input_text.set_value
+        target:
+          entity_id: input_text.last_voice_command
+        data:
+          value: "{{ slots.text | default('conversation command') }}"
+      - service: system_log.write
+        data:
+          message: "Athena captured: {{ slots.text | default('unknown') }}"
+          level: info
