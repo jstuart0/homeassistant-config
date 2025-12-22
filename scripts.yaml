@@ -2,6 +2,34 @@
 # TABLET DASHBOARD SCRIPTS
 # =======================
 
+# Dynamic Remote Control Script
+# Sends commands to the selected Apple TV based on input_select.active_remote_device
+remote_send_dynamic:
+  alias: "Send Remote Command to Selected Device"
+  fields:
+    command:
+      description: "The command to send (menu, up, down, left, right, select, home, play_pause, etc.)"
+      example: "select"
+  sequence:
+    - service: remote.send_command
+      target:
+        entity_id: >
+          {% set room = states('input_select.active_remote_device') %}
+          {% if room == 'Living Room' %}
+            remote.living_room
+          {% elif room == 'Master Bedroom' %}
+            remote.master_bedroom
+          {% elif room == 'Alpha' %}
+            remote.alpha
+          {% elif room == 'Beta' %}
+            remote.beta
+          {% else %}
+            remote.living_room
+          {% endif %}
+      data:
+        command: "{{ command }}"
+  mode: single
+
 # Ring Doorbell Auto-Display Scripts
 # Updated 2025-12-22 to use browser_mod popup
 
