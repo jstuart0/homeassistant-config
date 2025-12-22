@@ -270,3 +270,160 @@
       text: '{{ trigger.event.data.text if trigger.event.data.text is defined else "" }}'
   mode: parallel
   max: 10
+
+# =======================
+# MOVIE MODE AUTOMATIONS
+# Added 2025-12-22
+# =======================
+
+# Movie Mode - Start (Auto-trigger when Apple TV plays after sunset)
+- id: 'movie_mode_start'
+  alias: "Movie Mode - Start"
+  description: "Auto-activate movie mode when Apple TV starts playing after sunset"
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_apple_tv
+      to: 'playing'
+  condition:
+    - condition: sun
+      after: sunset
+    - condition: state
+      entity_id: input_boolean.global_movie_mode
+      state: 'off'
+  action:
+    # Save current state
+    - service: scene.create
+      data:
+        scene_id: before_movie
+        snapshot_entities:
+          - light.living_room
+          - light.dining_room
+          - light.kitchen
+          - light.kitchen_undercabinet_light
+    # Small delay to confirm not just scrolling
+    - delay:
+        seconds: 5
+    # Verify still playing
+    - condition: state
+      entity_id: media_player.living_room_apple_tv
+      state: 'playing'
+    # Activate movie mode scene
+    - service: scene.turn_on
+      target:
+        entity_id: scene.movie_mode_living_room
+      data:
+        transition: 3
+    # Block motion automations
+    - service: input_boolean.turn_on
+      target:
+        entity_id:
+          - input_boolean.block_motion_lighting_living_room
+          - input_boolean.block_motion_lighting_dining_room
+          - input_boolean.block_motion_lighting_kitchen
+    # Set global movie mode flag
+    - service: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.global_movie_mode
+  mode: single
+
+# Movie Mode - Pause (Intermission lighting)
+- id: 'movie_mode_pause'
+  alias: "Movie Mode - Pause (Intermission)"
+  description: "Raise lights when movie is paused for more than 10 seconds"
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_apple_tv
+      to: 'paused'
+      for:
+        seconds: 10
+  condition:
+    - condition: state
+      entity_id: input_boolean.global_movie_mode
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      target:
+        entity_id: scene.movie_mode_pause
+      data:
+        transition: 2
+  mode: single
+
+# Movie Mode - Resume
+- id: 'movie_mode_resume'
+  alias: "Movie Mode - Resume"
+  description: "Dim lights back when movie resumes from pause"
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_apple_tv
+      from: 'paused'
+      to: 'playing'
+  condition:
+    - condition: state
+      entity_id: input_boolean.global_movie_mode
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      target:
+        entity_id: scene.movie_mode_living_room
+      data:
+        transition: 2
+  mode: single
+
+# Movie Mode - End
+- id: 'movie_mode_end'
+  alias: "Movie Mode - End"
+  description: "Restore lighting when movie ends or Apple TV goes idle"
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_apple_tv
+      to: 'idle'
+      for:
+        seconds: 30
+    - platform: state
+      entity_id: media_player.living_room_apple_tv
+      to: 'standby'
+      for:
+        seconds: 30
+  condition:
+    - condition: state
+      entity_id: input_boolean.global_movie_mode
+      state: 'on'
+  action:
+    # Restore previous lighting
+    - service: scene.turn_on
+      target:
+        entity_id: scene.before_movie
+      data:
+        transition: 3
+    # Unblock motion automations
+    - service: input_boolean.turn_off
+      target:
+        entity_id:
+          - input_boolean.block_motion_lighting_living_room
+          - input_boolean.block_motion_lighting_dining_room
+          - input_boolean.block_motion_lighting_kitchen
+    # Clear movie mode flag
+    - service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.global_movie_mode
+  mode: single
+
+# Dashboard Theme Switcher
+- id: 'dashboard_theme_switch'
+  alias: "Apply Dashboard Theme"
+  description: "Change dashboard theme when selection changes"
+  trigger:
+    - platform: state
+      entity_id: input_select.dashboard_theme
+  action:
+    - service: frontend.set_theme
+      data:
+        name: >
+          {% set theme_map = {
+            'Dark Gradient': 'tablet-modern-dark-gradient',
+            'Light Mode': 'tablet-modern-light-mode',
+            'Ocean Blue': 'tablet-modern-ocean-blue',
+            'Sunset Warm': 'tablet-modern-sunset-warm'
+          } %}
+          {{ theme_map.get(states('input_select.dashboard_theme'), 'tablet-modern-dark-gradient') }}
+  mode: single

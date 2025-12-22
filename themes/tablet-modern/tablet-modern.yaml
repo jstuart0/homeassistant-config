@@ -1,0 +1,173 @@
+# Tablet Modern Theme
+# Created: 2025-12-22
+# Multiple theme variants for tablet dashboard
+
+tablet-modern-dark-gradient:
+  # Base colors - Dark slate with indigo accent
+  primary-color: "#6366f1"
+  accent-color: "#8b5cf6"
+
+  # Background
+  primary-background-color: "#0f172a"
+  secondary-background-color: "#1e293b"
+  card-background-color: "rgba(30, 41, 59, 0.85)"
+
+  # Text
+  primary-text-color: "#f1f5f9"
+  secondary-text-color: "#94a3b8"
+  text-primary-color: "#f1f5f9"
+
+  # Cards
+  ha-card-background: "rgba(30, 41, 59, 0.8)"
+  ha-card-border-radius: "16px"
+  ha-card-box-shadow: "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)"
+
+  # Navigation
+  paper-tabs-selection-bar-color: "#6366f1"
+  paper-tab-ink: "#6366f1"
+
+  # Buttons
+  mdc-button-outline-color: "#6366f1"
+  mdc-theme-primary: "#6366f1"
+
+  # Slider
+  paper-slider-knob-color: "#6366f1"
+  paper-slider-active-color: "#6366f1"
+  paper-slider-container-color: "#475569"
+
+  # Toggle
+  switch-checked-color: "#6366f1"
+  switch-unchecked-button-color: "#64748b"
+  switch-unchecked-track-color: "#334155"
+
+  # Divider
+  divider-color: "rgba(148, 163, 184, 0.2)"
+
+  # States
+  state-icon-active-color: "#6366f1"
+  state-icon-color: "#94a3b8"
+
+  # Mushroom specific
+  mush-rgb-blue: "99, 102, 241"
+  mush-rgb-purple: "139, 92, 246"
+
+  # Bubble Card specific
+  bubble-accent-color: "#6366f1"
+  bubble-bg-color: "rgba(30, 41, 59, 0.9)"
+
+tablet-modern-light-mode:
+  # Light theme variant
+  primary-color: "#6366f1"
+  accent-color: "#8b5cf6"
+
+  primary-background-color: "#f8fafc"
+  secondary-background-color: "#e2e8f0"
+  card-background-color: "rgba(255, 255, 255, 0.95)"
+
+  primary-text-color: "#1e293b"
+  secondary-text-color: "#64748b"
+  text-primary-color: "#1e293b"
+
+  ha-card-background: "rgba(255, 255, 255, 0.9)"
+  ha-card-border-radius: "16px"
+  ha-card-box-shadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+
+  paper-tabs-selection-bar-color: "#6366f1"
+  mdc-theme-primary: "#6366f1"
+
+  paper-slider-knob-color: "#6366f1"
+  paper-slider-active-color: "#6366f1"
+  paper-slider-container-color: "#cbd5e1"
+
+  switch-checked-color: "#6366f1"
+  switch-unchecked-button-color: "#94a3b8"
+  switch-unchecked-track-color: "#e2e8f0"
+
+  divider-color: "rgba(100, 116, 139, 0.2)"
+
+  state-icon-active-color: "#6366f1"
+  state-icon-color: "#64748b"
+
+  mush-rgb-blue: "99, 102, 241"
+  mush-rgb-purple: "139, 92, 246"
+
+  bubble-accent-color: "#6366f1"
+  bubble-bg-color: "rgba(255, 255, 255, 0.95)"
+
+tablet-modern-ocean-blue:
+  # Ocean blue theme variant
+  primary-color: "#0ea5e9"
+  accent-color: "#06b6d4"
+
+  primary-background-color: "#0c1929"
+  secondary-background-color: "#1a3a52"
+  card-background-color: "rgba(26, 58, 82, 0.85)"
+
+  primary-text-color: "#f0f9ff"
+  secondary-text-color: "#7dd3fc"
+  text-primary-color: "#f0f9ff"
+
+  ha-card-background: "rgba(26, 58, 82, 0.8)"
+  ha-card-border-radius: "16px"
+  ha-card-box-shadow: "0 4px 6px -1px rgba(0, 0, 0, 0.3)"
+
+  paper-tabs-selection-bar-color: "#0ea5e9"
+  mdc-theme-primary: "#0ea5e9"
+
+  paper-slider-knob-color: "#0ea5e9"
+  paper-slider-active-color: "#0ea5e9"
+  paper-slider-container-color: "#1e4a6d"
+
+  switch-checked-color: "#0ea5e9"
+  switch-unchecked-button-color: "#64748b"
+  switch-unchecked-track-color: "#1e4a6d"
+
+  divider-color: "rgba(125, 211, 252, 0.2)"
+
+  state-icon-active-color: "#0ea5e9"
+  state-icon-color: "#7dd3fc"
+
+  mush-rgb-blue: "14, 165, 233"
+  mush-rgb-purple: "6, 182, 212"
+
+  bubble-accent-color: "#0ea5e9"
+  bubble-bg-color: "rgba(26, 58, 82, 0.9)"
+
+tablet-modern-sunset-warm:
+  # Warm sunset theme variant
+  primary-color: "#f97316"
+  accent-color: "#fb923c"
+
+  primary-background-color: "#1c1410"
+  secondary-background-color: "#2d1f18"
+  card-background-color: "rgba(45, 31, 24, 0.85)"
+
+  primary-text-color: "#fff7ed"
+  secondary-text-color: "#fdba74"
+  text-primary-color: "#fff7ed"
+
+  ha-card-background: "rgba(45, 31, 24, 0.8)"
+  ha-card-border-radius: "16px"
+  ha-card-box-shadow: "0 4px 6px -1px rgba(0, 0, 0, 0.3)"
+
+  paper-tabs-selection-bar-color: "#f97316"
+  mdc-theme-primary: "#f97316"
+
+  paper-slider-knob-color: "#f97316"
+  paper-slider-active-color: "#f97316"
+  paper-slider-container-color: "#4a3225"
+
+  switch-checked-color: "#f97316"
+  switch-unchecked-button-color: "#9a8478"
+  switch-unchecked-track-color: "#4a3225"
+
+  divider-color: "rgba(253, 186, 116, 0.2)"
+
+  state-icon-active-color: "#f97316"
+  state-icon-color: "#fdba74"
+
+  mush-rgb-blue: "249, 115, 22"
+  mush-rgb-purple: "251, 146, 60"
+
+  bubble-accent-color: "#f97316"
+  bubble-bg-color: "rgba(45, 31, 24, 0.9)"

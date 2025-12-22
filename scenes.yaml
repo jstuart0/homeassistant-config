@@ -1143,3 +1143,46 @@
     light.ambient_light:
       entity_only: true
   icon: mdi:bird
+
+# =======================
+# MOVIE MODE SCENES
+# Added 2025-12-22
+# =======================
+
+# Movie Mode - Living Room Active
+# Dims open floor plan (LR -> Dining -> Kitchen) for movie watching
+- id: 'movie_mode_living_room'
+  name: Movie Mode - Living Room
+  entities:
+    # Living Room - OFF for best picture quality
+    light.living_room:
+      state: 'off'
+    # Dining Room - very dim for safe navigation
+    light.dining_room:
+      brightness_pct: 15
+      kelvin: 2700
+      state: 'on'
+    # Kitchen main - off to prevent glare
+    light.kitchen:
+      state: 'off'
+    # Kitchen undercabinet - minimal for safety
+    light.kitchen_undercabinet_light:
+      brightness_pct: 10
+      state: 'on'
+  icon: mdi:movie-open
+
+# Movie Mode - Pause/Intermission
+# Raises lights when movie is paused
+- id: 'movie_mode_pause'
+  name: Movie Mode - Pause
+  entities:
+    light.living_room:
+      brightness_pct: 40
+      state: 'on'
+    light.dining_room:
+      brightness_pct: 50
+      state: 'on'
+    light.kitchen:
+      brightness_pct: 30
+      state: 'on'
+  icon: mdi:pause-circle

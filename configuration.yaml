@@ -266,6 +266,17 @@ input_boolean:
   global_movie_mode:
     name: Global Movie Mode
     icon: mdi:movie-open
+
+  # Movie Mode Motion Blocking (Added 2025-12-22)
+  block_motion_lighting_living_room:
+    name: Block Motion - Living Room
+    icon: mdi:motion-sensor-off
+  block_motion_lighting_dining_room:
+    name: Block Motion - Dining Room
+    icon: mdi:motion-sensor-off
+  block_motion_lighting_kitchen:
+    name: Block Motion - Kitchen
+    icon: mdi:motion-sensor-off
   # Living Room Additional Overrides
   living_room_brightness_override:
     name: Living Room Brightness Override
@@ -344,6 +355,39 @@ input_datetime:
     has_date: false
     has_time: true
     initial: "09:00"
+
+# Tablet Dashboard Settings (Added 2025-12-22)
+input_select:
+  dashboard_theme:
+    name: Dashboard Theme
+    options:
+      - Dark Gradient
+      - Light Mode
+      - Ocean Blue
+      - Sunset Warm
+    initial: Dark Gradient
+    icon: mdi:palette
+
+  dashboard_accent:
+    name: Accent Color
+    options:
+      - Indigo
+      - Purple
+      - Teal
+      - Orange
+      - Pink
+    initial: Indigo
+    icon: mdi:palette-swatch
+
+  active_remote_device:
+    name: Active Remote Device
+    options:
+      - Living Room
+      - Master Bedroom
+      - Alpha
+      - Beta
+    initial: Living Room
+    icon: mdi:remote-tv
 
 input_number:
   mbr_leave_lights_on_minutes:

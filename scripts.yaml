@@ -3,73 +3,110 @@
 # =======================
 
 # Ring Doorbell Auto-Display Scripts
+# Updated 2025-12-22 to use browser_mod popup
+
 show_ring_camera:
   alias: "Show Ring Camera on All Tablets (Clinton Front Door)"
   sequence:
-    # Navigate all tablets to Ring camera page
-    - service: browser_mod.navigate
+    # Show popup with Ring camera on all tablets
+    - service: browser_mod.popup
       data:
-        path: /tablet-dashboard/ring-camera
         browser_id:
           - all
+        title: "🔔 Someone at the Door"
+        content:
+          type: vertical-stack
+          cards:
+            - type: picture-entity
+              entity: camera.ring_livestream
+              camera_view: live
+              show_state: false
+              show_name: false
+            - type: custom:mushroom-template-card
+              primary: "Dismiss"
+              icon: mdi:close
+              icon_color: red
+              layout: horizontal
+              tap_action:
+                action: call-service
+                service: browser_mod.close_popup
+        size: wide
+        dismissable: true
+        timeout: 180000
     # Send notification to mobile devices
     - service: notify.mobile_app_jay_iphone_14_pro_max
       data:
         title: "🔔 Doorbell"
         message: "Someone is at the Clinton Front Door"
+        data:
+          image: /api/camera_proxy/camera.ring_livestream
     # Start monitoring for auto-dismiss conditions
     - wait_for_trigger:
-        # Exit condition 1: Front door opened
         - platform: state
           entity_id: binary_sensor.door_front_contact
           to: "on"
       timeout: "00:03:00"
       continue_on_timeout: true
-    # Return tablets to appropriate pages after delay
-    - delay: 00:00:05
-    - service: browser_mod.navigate
+    # Close popup after door opens
+    - service: browser_mod.close_popup
       data:
-        path: /tablet-dashboard/home
         browser_id:
           - all
 
 show_ring_camera_alt:
   alias: "Show Ring Camera on All Tablets (Other Doors)"
   sequence:
-    # Navigate all tablets to Ring camera page
-    - service: browser_mod.navigate
+    # Show popup with Ring camera on all tablets
+    - service: browser_mod.popup
       data:
-        path: /tablet-dashboard/ring-camera
         browser_id:
           - all
+        title: "🔔 Someone at the Door"
+        content:
+          type: vertical-stack
+          cards:
+            - type: picture-entity
+              entity: camera.ring_livestream
+              camera_view: live
+              show_state: false
+              show_name: false
+            - type: custom:mushroom-template-card
+              primary: "Dismiss"
+              icon: mdi:close
+              icon_color: red
+              layout: horizontal
+              tap_action:
+                action: call-service
+                service: browser_mod.close_popup
+        size: wide
+        dismissable: true
+        timeout: 180000
     # Send notification to mobile devices
     - service: notify.mobile_app_jay_iphone_14_pro_max
       data:
         title: "🔔 Doorbell"
         message: "Someone is at the Front Door"
+        data:
+          image: /api/camera_proxy/camera.ring_livestream
     # Start monitoring for auto-dismiss conditions
     - wait_for_trigger:
-        # Exit condition 1: Front door opened
         - platform: state
           entity_id: binary_sensor.door_front_contact
           to: "on"
       timeout: "00:03:00"
       continue_on_timeout: true
-    # Return tablets to appropriate pages after delay
-    - delay: 00:00:05
-    - service: browser_mod.navigate
+    # Close popup after door opens
+    - service: browser_mod.close_popup
       data:
-        path: /tablet-dashboard/home
         browser_id:
           - all
 
 dismiss_ring_camera:
   alias: "Dismiss Ring Camera Manually"
   sequence:
-    # Navigate back to home page on all tablets
-    - service: browser_mod.navigate
+    # Close popup on all tablets
+    - service: browser_mod.close_popup
       data:
-        path: /tablet-dashboard/home
         browser_id:
           - all
 
@@ -583,6 +620,62 @@ reset_light_settings:
       data:
         entity_id: input_number.override_brightness
         value: 100
+
+# =======================
+# MOVIE MODE TOGGLE SCRIPT
+# Added 2025-12-22
+# =======================
+
+toggle_movie_mode:
+  alias: "Toggle Movie Mode"
+  description: "Manually toggle movie mode on/off from dashboard"
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.global_movie_mode
+              state: 'off'
+          sequence:
+            # Save current state before activating
+            - service: scene.create
+              data:
+                scene_id: before_movie
+                snapshot_entities:
+                  - light.living_room
+                  - light.dining_room
+                  - light.kitchen
+                  - light.kitchen_undercabinet_light
+            # Activate movie mode scene
+            - service: scene.turn_on
+              target:
+                entity_id: scene.movie_mode_living_room
+              data:
+                transition: 2
+            # Block motion automations and set flag
+            - service: input_boolean.turn_on
+              target:
+                entity_id:
+                  - input_boolean.global_movie_mode
+                  - input_boolean.block_motion_lighting_living_room
+                  - input_boolean.block_motion_lighting_dining_room
+                  - input_boolean.block_motion_lighting_kitchen
+      default:
+        # Restore and deactivate
+        - service: scene.turn_on
+          target:
+            entity_id: scene.before_movie
+          data:
+            transition: 2
+        - service: input_boolean.turn_off
+          target:
+            entity_id:
+              - input_boolean.global_movie_mode
+              - input_boolean.block_motion_lighting_living_room
+              - input_boolean.block_motion_lighting_dining_room
+              - input_boolean.block_motion_lighting_kitchen
+  mode: single
+  icon: mdi:movie-open
+
 #############################
 
 mode: single
