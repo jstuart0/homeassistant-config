@@ -2,15 +2,13 @@
 # TABLET MODERN DASHBOARD
 # Created: 2025-12-22
 # Redesigned for 8" and 10" tablets with modern aesthetics
+# Swipe left/right to navigate between views
 # ===========================================
 
-title: "Home"
+title: "Tablet Modern"
 
-# Kiosk mode configuration
-kiosk_mode:
-  hide_header: true
-  hide_sidebar: true
-  hide_overflow: true
+# Swipe navigation works via hass-swipe-navigation plugin
+# Tabs visible by default - use Fully Kiosk or browser_mod for kiosk mode
 
 views:
   # ===========================================
@@ -661,7 +659,7 @@ views:
             icon: mdi:television
             fill_container: true
 
-          # Apple TV Remote Controls
+          # Apple TV Remote Controls - Dynamic based on selected device
           - type: vertical-stack
             cards:
               # Navigation Row
@@ -669,19 +667,22 @@ views:
                 cards:
                   - type: custom:button-card
                     icon: mdi:menu
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: >
-                          {% if is_state('input_select.active_remote_device', 'Living Room') %}
-                            remote.living_room
-                          {% elif is_state('input_select.active_remote_device', 'Master Bedroom') %}
-                            remote.master_bedroom
-                          {% else %}
-                            remote.living_room
-                          {% endif %}
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: menu
                     styles:
                       card:
@@ -690,17 +691,22 @@ views:
                         - height: 60px
                   - type: custom:button-card
                     icon: mdi:arrow-up
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: >
-                          {% if is_state('input_select.active_remote_device', 'Living Room') %}
-                            remote.living_room
-                          {% else %}
-                            remote.living_room
-                          {% endif %}
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: up
                     styles:
                       card:
@@ -709,12 +715,22 @@ views:
                         - height: 60px
                   - type: custom:button-card
                     icon: mdi:home
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: home
                     styles:
                       card:
@@ -727,12 +743,22 @@ views:
                 cards:
                   - type: custom:button-card
                     icon: mdi:arrow-left
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: left
                     styles:
                       card:
@@ -743,12 +769,22 @@ views:
                     icon: mdi:checkbox-blank-circle
                     name: Select
                     show_name: true
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: select
                     styles:
                       card:
@@ -760,12 +796,22 @@ views:
                         - font-size: 10px
                   - type: custom:button-card
                     icon: mdi:arrow-right
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: right
                     styles:
                       card:
@@ -778,12 +824,22 @@ views:
                 cards:
                   - type: custom:button-card
                     icon: mdi:skip-backward
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: skip_backward
                     styles:
                       card:
@@ -792,12 +848,22 @@ views:
                         - height: 60px
                   - type: custom:button-card
                     icon: mdi:arrow-down
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: down
                     styles:
                       card:
@@ -806,12 +872,22 @@ views:
                         - height: 60px
                   - type: custom:button-card
                     icon: mdi:skip-forward
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: skip_forward
                     styles:
                       card:
@@ -825,12 +901,22 @@ views:
                   - type: custom:button-card
                     icon: mdi:play-pause
                     name: Play/Pause
+                    entity: input_select.active_remote_device
                     tap_action:
                       action: call-service
                       service: remote.send_command
-                      target:
-                        entity_id: remote.living_room
-                      data:
+                      service_data:
+                        entity_id: |
+                          [[[
+                            const room = states['input_select.active_remote_device'].state;
+                            const remotes = {
+                              'Living Room': 'remote.living_room',
+                              'Master Bedroom': 'remote.master_bedroom',
+                              'Alpha': 'remote.alpha',
+                              'Beta': 'remote.beta'
+                            };
+                            return remotes[room] || 'remote.living_room';
+                          ]]]
                         command: play_pause
                     styles:
                       card:
@@ -864,7 +950,7 @@ views:
 
           # Now Playing - Media Player Card
           - type: custom:mushroom-media-player-card
-            entity: media_player.spotify_jstuart0
+            entity: media_player.spotify_jay_stuart
             name: "Now Playing"
             fill_container: true
             use_media_info: true

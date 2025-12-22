@@ -4,6 +4,17 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
+# Lovelace Dashboards - YAML mode dashboards
+lovelace:
+  mode: storage
+  dashboards:
+    tablet-modern:
+      mode: yaml
+      title: Tablet Modern
+      icon: mdi:tablet-dashboard
+      show_in_sidebar: true
+      filename: dashboards/tablet-modern.yaml
+
 # Text to speech
 tts:
   - platform: google_translate
