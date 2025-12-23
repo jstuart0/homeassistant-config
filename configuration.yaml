@@ -400,6 +400,22 @@ input_select:
     initial: Living Room
     icon: mdi:remote-tv
 
+  dashboard_background:
+    name: Dashboard Background
+    options:
+      - Dark Slate
+      - Midnight Blue
+      - Deep Purple
+      - Northern Lights
+      - Cosmic Gradient
+      - Neon Glow
+      - Sunset Horizon
+      - Ocean Depth
+      - Forest Night
+      - Minimalist Dark
+    initial: Dark Slate
+    icon: mdi:image
+
 input_number:
   mbr_leave_lights_on_minutes:
     name: Leave On Duration (Minutes)
