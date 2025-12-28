@@ -699,42 +699,6 @@ views:
             primary_info: state
             secondary_info: name
             layout: vertical
-            card_mod:
-              style:
-                .: |
-                  ha-card {
-                    {% set hvac = state_attr(config.entity, 'hvac_action') %}
-                    {% if hvac == 'heating' %}
-                    animation: hvac-heat 2s ease-in-out infinite;
-                    border-bottom: 2px solid rgba(249, 115, 22, 0.7);
-                    {% elif hvac == 'cooling' %}
-                    animation: hvac-cool 2s ease-in-out infinite;
-                    border-bottom: 2px solid rgba(59, 130, 246, 0.7);
-                    {% endif %}
-                  }
-                  @keyframes hvac-heat {
-                    0%, 100% { box-shadow: 0 0 8px 1px rgba(249, 115, 22, 0.2); }
-                    50% { box-shadow: 0 0 15px 3px rgba(249, 115, 22, 0.4); }
-                  }
-                  @keyframes hvac-cool {
-                    0%, 100% { box-shadow: 0 0 8px 1px rgba(59, 130, 246, 0.2); }
-                    50% { box-shadow: 0 0 15px 3px rgba(59, 130, 246, 0.4); }
-                  }
-                mushroom-shape-icon$: |
-                  .shape {
-                    {% set hvac = state_attr(config.entity, 'hvac_action') %}
-                    {% if hvac == 'heating' %}
-                    --shape-animation: thermostat-pulse 1.5s ease-in-out infinite;
-                    --icon-color: rgb(249, 115, 22) !important;
-                    {% elif hvac == 'cooling' %}
-                    --shape-animation: thermostat-pulse 1.5s ease-in-out infinite;
-                    --icon-color: rgb(59, 130, 246) !important;
-                    {% endif %}
-                  }
-                  @keyframes thermostat-pulse {
-                    0%, 100% { transform: scale(1); }
-                    50% { transform: scale(1.1); }
-                  }
           - type: custom:mushroom-entity-card
             entity: input_boolean.living_room_manual_mode
             name: "Manual"
@@ -748,28 +712,8 @@ views:
       # Main Light Control
       - type: custom:mushroom-light-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'on') %}
-                animation: glow-pulse 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes glow-pulse {
-                0%, 100% { box-shadow: 0 0 15px 2px rgba(251, 191, 36, 0.3); }
-                50% { box-shadow: 0 0 25px 5px rgba(251, 191, 36, 0.5); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'on') %}
-                --shape-animation: light-breathe 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes light-breathe {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.05); opacity: 1; }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: light.living_room
         name: "Main Lights"
         fill_container: true
@@ -905,31 +849,8 @@ views:
       # Apple TV Control
       - type: custom:mushroom-media-player-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'playing') %}
-                animation: media-pulse 1.5s ease-in-out infinite;
-                border-left: 3px solid rgba(139, 92, 246, 0.8);
-                {% endif %}
-              }
-              @keyframes media-pulse {
-                0%, 100% { box-shadow: 0 0 10px 1px rgba(139, 92, 246, 0.2); }
-                50% { box-shadow: 0 0 20px 3px rgba(139, 92, 246, 0.4); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'playing') %}
-                --shape-animation: speaker-wave 1s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes speaker-wave {
-                0%, 100% { transform: scale(1); }
-                25% { transform: scale(1.1); }
-                50% { transform: scale(1); }
-                75% { transform: scale(1.08); }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: media_player.living_room
         name: "Apple TV"
         use_media_info: true
@@ -1236,28 +1157,6 @@ views:
             show_brightness_control: true
             use_light_color: true
             collapsible_controls: true
-            card_mod:
-              style:
-                .: |
-                  ha-card {
-                    {% if is_state(config.entity, 'on') %}
-                    animation: glow-pulse 2s ease-in-out infinite;
-                    {% endif %}
-                  }
-                  @keyframes glow-pulse {
-                    0%, 100% { box-shadow: 0 0 15px 2px rgba(251, 191, 36, 0.3); }
-                    50% { box-shadow: 0 0 25px 5px rgba(251, 191, 36, 0.5); }
-                  }
-                mushroom-shape-icon$: |
-                  .shape {
-                    {% if is_state(config.entity, 'on') %}
-                    --shape-animation: light-breathe 2s ease-in-out infinite;
-                    {% endif %}
-                  }
-                  @keyframes light-breathe {
-                    0%, 100% { transform: scale(1); opacity: 0.9; }
-                    50% { transform: scale(1.05); opacity: 1; }
-                  }
           # Kitchen Island Lights
           - type: custom:mushroom-light-card
             entity: light.kitchen_island
@@ -1266,28 +1165,6 @@ views:
             show_brightness_control: true
             use_light_color: true
             collapsible_controls: true
-            card_mod:
-              style:
-                .: |
-                  ha-card {
-                    {% if is_state(config.entity, 'on') %}
-                    animation: glow-pulse 2s ease-in-out infinite;
-                    {% endif %}
-                  }
-                  @keyframes glow-pulse {
-                    0%, 100% { box-shadow: 0 0 15px 2px rgba(251, 191, 36, 0.3); }
-                    50% { box-shadow: 0 0 25px 5px rgba(251, 191, 36, 0.5); }
-                  }
-                mushroom-shape-icon$: |
-                  .shape {
-                    {% if is_state(config.entity, 'on') %}
-                    --shape-animation: light-breathe 2s ease-in-out infinite;
-                    {% endif %}
-                  }
-                  @keyframes light-breathe {
-                    0%, 100% { transform: scale(1); opacity: 0.9; }
-                    50% { transform: scale(1.05); opacity: 1; }
-                  }
 
       # Counter Ambient Lights
       - type: custom:mushroom-light-card
@@ -1550,28 +1427,8 @@ views:
       # Main Light Control
       - type: custom:mushroom-light-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'on') %}
-                animation: glow-pulse 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes glow-pulse {
-                0%, 100% { box-shadow: 0 0 15px 2px rgba(251, 191, 36, 0.3); }
-                50% { box-shadow: 0 0 25px 5px rgba(251, 191, 36, 0.5); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'on') %}
-                --shape-animation: light-breathe 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes light-breathe {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.05); opacity: 1; }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: light.dining_room
         name: "Dining Room Lights"
         fill_container: true
@@ -1806,28 +1663,8 @@ views:
       # Main Light Control
       - type: custom:mushroom-light-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'on') %}
-                animation: glow-pulse 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes glow-pulse {
-                0%, 100% { box-shadow: 0 0 15px 2px rgba(139, 92, 246, 0.3); }
-                50% { box-shadow: 0 0 25px 5px rgba(139, 92, 246, 0.5); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'on') %}
-                --shape-animation: light-breathe 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes light-breathe {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.05); opacity: 1; }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: light.master_bedroom
         name: "Main Lights"
         fill_container: true
@@ -2503,28 +2340,8 @@ views:
       # Main Light Control
       - type: custom:mushroom-light-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'on') %}
-                animation: glow-pulse 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes glow-pulse {
-                0%, 100% { box-shadow: 0 0 15px 2px rgba(6, 182, 212, 0.3); }
-                50% { box-shadow: 0 0 25px 5px rgba(6, 182, 212, 0.5); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'on') %}
-                --shape-animation: light-breathe 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes light-breathe {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.05); opacity: 1; }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: light.office
         name: "Office Lights"
         fill_container: true
@@ -2744,28 +2561,8 @@ views:
       # Main Light Control
       - type: custom:mushroom-light-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'on') %}
-                animation: glow-pulse 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes glow-pulse {
-                0%, 100% { box-shadow: 0 0 15px 2px rgba(236, 72, 153, 0.3); }
-                50% { box-shadow: 0 0 25px 5px rgba(236, 72, 153, 0.5); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'on') %}
-                --shape-animation: light-breathe 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes light-breathe {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.05); opacity: 1; }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: light.alpha
         name: "Room Lights"
         fill_container: true
@@ -3043,28 +2840,8 @@ views:
       # Main Light Control
       - type: custom:mushroom-light-card
         card_mod:
-          style:
-            .: |
-              :host { grid-column: 1 / -1 !important; }
-              ha-card {
-                {% if is_state(config.entity, 'on') %}
-                animation: glow-pulse 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes glow-pulse {
-                0%, 100% { box-shadow: 0 0 15px 2px rgba(168, 85, 247, 0.3); }
-                50% { box-shadow: 0 0 25px 5px rgba(168, 85, 247, 0.5); }
-              }
-            mushroom-shape-icon$: |
-              .shape {
-                {% if is_state(config.entity, 'on') %}
-                --shape-animation: light-breathe 2s ease-in-out infinite;
-                {% endif %}
-              }
-              @keyframes light-breathe {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.05); opacity: 1; }
-              }
+          style: |
+            :host { grid-column: 1 / -1 !important; }
         entity: light.beta
         name: "Room Lights"
         fill_container: true
